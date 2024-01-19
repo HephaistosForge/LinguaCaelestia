@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dshngdf7epd01"
-path="res://.godot/imported/PixelFlag.ttf-adb9e767203a5b876fdd6a42aede2a0b.fontdata"
+path="res://.godot/imported/PixelFlag.ttf-bf8b576c3ad25d64526802c92f406d81.fontdata"
 
 [deps]
 
-source_file="res://resources/PixelFlag.ttf"
-dest_files=["res://.godot/imported/PixelFlag.ttf-adb9e767203a5b876fdd6a42aede2a0b.fontdata"]
+source_file="res://ui/fonts/PixelFlag.ttf"
+dest_files=["res://.godot/imported/PixelFlag.ttf-bf8b576c3ad25d64526802c92f406d81.fontdata"]
 
 [params]
 

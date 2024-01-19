@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cljhj3x1g71c0"]
+
+[node name="Explosion" type="Node2D"]
+
+[node name="Explosion" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 500
+one_shot = true
+explosiveness = 1.0

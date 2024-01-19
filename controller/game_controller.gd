@@ -50,10 +50,15 @@ func _on_ship_destroyed(index):
 func _random_enemy():
 	var lang = _random_choice(Lang.LANGUAGES)
 	var cruiser = lang.cruiser_scene.instantiate()
-	cruiser.set_text(_random_choice(lang.ship_words))
+	cruiser.set_text(_random_choice(lang.ship_words).strip_edges())
 	return cruiser
 	
 
+func _player_launch_rocket_at(node):
+	var rocket = rocket_scene.instantiate()
+	rocket.position = get_tree().get_first_node_in_group("rocket_launch_position").position
+	rocket.seek = node
+	add_child(rocket)
 
 func _on_text_edit_text_changed():
 	var text = $TextEdit.text
@@ -61,5 +66,6 @@ func _on_text_edit_text_changed():
 		if typed_label.type_text(text):
 			$TextEdit.text = ""
 			# TODO: for now destroy immediately
-			typed_label.get_parent().destroy()
+			#typed_label.get_parent().destroy()
+			_player_launch_rocket_at(typed_label.get_parent())
 			break
