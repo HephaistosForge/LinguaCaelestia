@@ -39,3 +39,4 @@ caret_multiple = false
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="text_set" from="TextEdit" to="." method="_on_text_edit_text_changed"]

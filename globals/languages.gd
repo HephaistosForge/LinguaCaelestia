@@ -5,6 +5,7 @@ var LANGUAGES: Array[Language] = [
 		"latin", 
 		["viva", "estus", "caesar", "latinos"], 
 		["shield"],
+		["rocket", "laser"],
 		preload("res://entities/enemies/latin/cruiser.tscn"),
 	),
 ]

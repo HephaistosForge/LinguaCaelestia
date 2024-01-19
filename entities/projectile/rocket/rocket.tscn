@@ -1,8 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj0ms41lvv7fw"]
+[gd_scene load_steps=6 format=3 uid="uid://dj0ms41lvv7fw"]
 
+[ext_resource type="Script" path="res://entities/projectile/rocket/rocket.gd" id="1_cnoo4"]
 [ext_resource type="Texture2D" uid="uid://b377xgq2e8ij6" path="res://entities/projectile/rocket/rocket.png" id="1_ekkc7"]
 
+[sub_resource type="Curve" id="Curve_tkvm8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_j30mh"]
+offsets = PackedFloat32Array(0, 0.403509, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx7pu"]
+size = Vector2(10, 40)
+
 [node name="Rocket" type="Area2D"]
+script = ExtResource("1_cnoo4")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 13)
+amount = 50
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, 1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_tkvm8")
+color_ramp = SubResource("Gradient_j30mh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ekkc7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_dx7pu")

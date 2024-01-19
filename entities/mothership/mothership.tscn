@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://baq4lpljix6qm"]
+[gd_scene load_steps=7 format=3 uid="uid://baq4lpljix6qm"]
 
 [ext_resource type="Texture2D" uid="uid://bxod2730lenna" path="res://resources/box.png" id="1_0wg1b"]
 [ext_resource type="PackedScene" uid="uid://6t8r5pw5wfjc" path="res://controller/rocket_launch_position.tscn" id="2_qkcl2"]
 [ext_resource type="Texture2D" uid="uid://dxk5drkxr5tbt" path="res://entities/mothership/laser.png" id="3_ca78k"]
 [ext_resource type="Texture2D" uid="uid://d0rtf686wl5ai" path="res://entities/mothership/shield_generator.png" id="4_6d8p0"]
+[ext_resource type="PackedScene" uid="uid://gdlg80cykwxt" path="res://controller/laser_launch_position.tscn" id="5_1g3ql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fvu3"]
 size = Vector2(1900, 206)
@@ -18,7 +19,7 @@ texture = ExtResource("1_0wg1b")
 shape = SubResource("RectangleShape2D_1fvu3")
 
 [node name="RocketLaunchPosition" parent="." instance=ExtResource("2_qkcl2")]
-position = Vector2(-357, -36)
+position = Vector2(-374, -28)
 
 [node name="Laser" type="Sprite2D" parent="."]
 position = Vector2(352, -81)
@@ -29,3 +30,6 @@ texture = ExtResource("3_ca78k")
 position = Vector2(-3.05176e-05, 0.999985)
 scale = Vector2(2, 2)
 texture = ExtResource("4_6d8p0")
+
+[node name="LaserLaunchPosition" parent="." instance=ExtResource("5_1g3ql")]
+position = Vector2(350, -14)

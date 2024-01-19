@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2nj1twkiad1l"]
+[gd_scene load_steps=5 format=3 uid="uid://c2nj1twkiad1l"]
 
 [ext_resource type="Script" path="res://entities/enemies/typed_label.gd" id="1_y7kph"]
+[ext_resource type="FontFile" uid="uid://dshngdf7epd01" path="res://resources/PixelFlag.ttf" id="2_qmn4w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uro80"]
-font_size = 36
+font = ExtResource("2_qmn4w")
+font_size = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_y5xh2"]
-font_size = 36
+font = ExtResource("2_qmn4w")
+font_size = 50
 font_color = Color(0.866667, 0, 0.156863, 1)
 
 [node name="TypedLabel" type="Node2D" groups=["typed_label"]]
