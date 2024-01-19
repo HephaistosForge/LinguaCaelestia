@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://ut0vy4oytro7"]
+[gd_scene load_steps=4 format=3 uid="uid://ut0vy4oytro7"]
 
-[node name="Cruiser" type="Node2D"]
+[ext_resource type="Script" path="res://entities/enemies/latin/cruiser.gd" id="1_31tes"]
+[ext_resource type="Texture2D" uid="uid://dyk7wq48gycyt" path="res://entities/enemies/latin/latin_cruiser.png" id="2_guxcj"]
+[ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_u6h1s"]
+
+[node name="Cruiser" type="Area2D"]
+script = ExtResource("1_31tes")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, -1)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_guxcj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="TypedLabel" parent="." instance=ExtResource("3_u6h1s")]
+position = Vector2(0, -104)

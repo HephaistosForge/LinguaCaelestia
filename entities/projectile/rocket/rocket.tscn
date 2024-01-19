@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj0ms41lvv7fw"]
+
+[ext_resource type="Texture2D" uid="uid://b377xgq2e8ij6" path="res://entities/projectile/rocket/rocket.png" id="1_ekkc7"]
+
+[node name="Rocket" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ekkc7")

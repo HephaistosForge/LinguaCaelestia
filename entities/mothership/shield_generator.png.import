@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b377xgq2e8ij6"
-path="res://.godot/imported/Rocket.png-9c27bf1fb371a271b1fffbc828886e94.ctex"
+uid="uid://d0rtf686wl5ai"
+path="res://.godot/imported/shield_generator.png-b47e12edc214ba30a4338ecfdca9d10e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Rocket.png"
-dest_files=["res://.godot/imported/Rocket.png-9c27bf1fb371a271b1fffbc828886e94.ctex"]
+source_file="res://entities/mothership/shield_generator.png"
+dest_files=["res://.godot/imported/shield_generator.png-b47e12edc214ba30a4338ecfdca9d10e.ctex"]
 
 [params]
 

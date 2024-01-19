@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://q465b7xb2fw0"]
+
+[node name="EnemyTargetPosition" type="Node2D" groups=["enemy_target_position"]]
