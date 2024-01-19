@@ -1,5 +1,22 @@
 extends Node2D
 
+var ENGLISH: Language = Language.new(
+	"english", 
+	[
+		"Fish sandwich","University","Semester","Holidays","Exam","Grades","Student","Lecturer",
+		"Lecture theatre","Research","Campus","Library","Newspaper","Learning","Building",
+		"Language","Philosophy","Computer","Paper","Pen","Dictionary","Formula","Number",
+		"Alphabet","Lecture","Exercise","Mensa","Student ID","Timetable","Student Council",
+		"Master thesis","Tuition fee","Regulations","Certificate","Scholarship","Excursion",
+		"Student pub","Celebration","Campus party","Graduate","Internship","Security",
+		"Mechanical engineering","Mathematics","After work hours","Computer Science","Zero",
+		"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"
+	], 
+	["Shield"],
+	["Rocket","Laser"],
+	preload("res://entities/enemies/latin/cruiser.tscn"),
+)
+
 var LANGUAGES: Array[Language] = [
 	Language.new(
 		"german", 
@@ -15,7 +32,7 @@ var LANGUAGES: Array[Language] = [
 		], 
 		["Schild"],
 		["Rakete","Laser"],
-		preload("res://entities/enemies/latin/cruiser.tscn"),
+		preload("res://entities/enemies/german/cruiser.tscn"),
 	),
 	Language.new(
 		"latin", 
@@ -50,7 +67,7 @@ var LANGUAGES: Array[Language] = [
 		],
 		["pale pale"],
 		["pana", "ihe"],
-		preload("res://entities/enemies/latin/cruiser.tscn"),
+		preload("res://entities/enemies/hawaiian/cruiser.tscn"),
 	),
 	Language.new(
 		"french", 
@@ -67,22 +84,6 @@ var LANGUAGES: Array[Language] = [
 		], 
 		["Bouclier"],
 		["Missile","Laser"],
-		preload("res://entities/enemies/latin/cruiser.tscn"),
-	),
-	Language.new(
-		"english", 
-		[
-			"Fish sandwich","University","Semester","Holidays","Exam","Grades","Student","Lecturer",
-			"Lecture theatre","Research","Campus","Library","Newspaper","Learning","Building",
-			"Language","Philosophy","Computer","Paper","Pen","Dictionary","Formula","Number",
-			"Alphabet","Lecture","Exercise","Mensa","Student ID","Timetable","Student Council",
-			"Master thesis","Tuition fee","Regulations","Certificate","Scholarship","Excursion",
-			"Student pub","Celebration","Campus party","Graduate","Internship","Security",
-			"Mechanical engineering","Mathematics","After work hours","Computer Science","Zero",
-			"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"
-		], 
-		["Shield"],
-		["Rocket","Laser"],
-		preload("res://entities/enemies/latin/cruiser.tscn"),
+		preload("res://entities/enemies/french/cruiser.tscn"),
 	),
 ]

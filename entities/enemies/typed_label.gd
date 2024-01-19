@@ -2,8 +2,11 @@ extends Node2D
 
 #signal correctly_typed
 
+@export var color: Color = Color.RED
+
 func _ready():
 	$Typed.visible_characters = 0
+	$Typed.modulate = color
 	
 	
 func set_text(text: String):

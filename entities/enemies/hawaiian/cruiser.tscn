@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2hku02w8pf8g"]
+
+[ext_resource type="Texture2D" uid="uid://dlr62jd136obn" path="res://entities/enemies/hawaiian/hawaiian_cruiser.png" id="1_od66u"]
+[ext_resource type="Script" path="res://entities/enemies/hawaiian/hawaiian.gd" id="1_v62ki"]
+[ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_lei02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
+size = Vector2(52, 106)
+
+[node name="Cruiser" type="Area2D"]
+script = ExtResource("1_v62ki")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(2, -3)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_od66u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jqkhx")
+
+[node name="TypedLabel" parent="." instance=ExtResource("3_lei02")]
+position = Vector2(0, -82)
+color = Color(0.305882, 0.745098, 0, 1)

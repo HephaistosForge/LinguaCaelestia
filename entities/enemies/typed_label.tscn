@@ -1,16 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2nj1twkiad1l"]
+[gd_scene load_steps=3 format=3 uid="uid://c2nj1twkiad1l"]
 
 [ext_resource type="Script" path="res://entities/enemies/typed_label.gd" id="1_y7kph"]
-[ext_resource type="FontFile" uid="uid://dshngdf7epd01" path="res://ui/fonts/PixelFlag.ttf" id="2_h57du"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_uro80"]
-font = ExtResource("2_h57du")
-font_size = 50
-
-[sub_resource type="LabelSettings" id="LabelSettings_y5xh2"]
-font = ExtResource("2_h57du")
-font_size = 50
-font_color = Color(0.866667, 0, 0.156863, 1)
+[ext_resource type="LabelSettings" uid="uid://ca8h6qp87k5ae" path="res://ui/typed_label.tres" id="2_y160e"]
 
 [node name="TypedLabel" type="Node2D" groups=["typed_label"]]
 script = ExtResource("1_y7kph")
@@ -28,12 +19,13 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "typeme"
-label_settings = SubResource("LabelSettings_uro80")
+label_settings = ExtResource("2_y160e")
 horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1
 
 [node name="Typed" type="Label" parent="."]
+modulate = Color(100, 0, 0, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -46,7 +38,7 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "typeme"
-label_settings = SubResource("LabelSettings_y5xh2")
+label_settings = ExtResource("2_y160e")
 horizontal_alignment = 1
 vertical_alignment = 1
 visible_characters_behavior = 1

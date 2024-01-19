@@ -50,7 +50,7 @@ func _on_ship_destroyed(index):
 func _random_enemy():
 	var lang = _random_choice(Lang.LANGUAGES)
 	var cruiser = lang.cruiser_scene.instantiate()
-	cruiser.set_text(_random_choice(lang.ship_words).strip_edges())
+	cruiser.set_text(_random_choice(lang.ship_words).strip_edges().to_lower())
 	return cruiser
 	
 
