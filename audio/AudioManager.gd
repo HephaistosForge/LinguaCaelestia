@@ -1,6 +1,7 @@
 extends Node
 
 const background_music = [
+	preload("res://audio/soundtrack.mp3")
 	]
 
 const alarm = []
