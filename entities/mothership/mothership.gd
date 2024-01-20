@@ -3,8 +3,6 @@ extends Area2D
 signal player_death
 
 
-#const SHIELD_PREFAB = preload()
-
 var max_hp = 1000
 var hp = 1000
 
@@ -17,7 +15,6 @@ func display_impact_warning(projectile_target: Node2D, weapon: Node2D, language:
 	if not projectile_target is Marker2D:
 		return
 	projectile_target.add_incoming_missile(weapon, language, projectile_target.get_index())
-	
 
 
 func reduce_hp(val: int) -> void:

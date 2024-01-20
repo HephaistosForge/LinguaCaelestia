@@ -11,7 +11,7 @@ shader = ExtResource("2_blg41")
 radius = 54.0
 
 [node name="Shield" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 script = ExtResource("1_c6qsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -25,3 +25,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 24)
 shape = SubResource("CircleShape2D_3wbjr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

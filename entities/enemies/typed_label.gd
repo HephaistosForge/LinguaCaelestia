@@ -28,6 +28,12 @@ func set_text(text: String):
 	$Label.text = text
 	$Typed.text = text
 
+
+func set_color(_color: Color):
+	self.color = _color
+	$Typed.modulate = self.color
+
+
 func normalized_string(string: String):
 	string = string.to_lower()
 	for i in range(len(string)):

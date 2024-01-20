@@ -5,13 +5,18 @@ const SHIELD_PREFAB = preload("res://entities/mothership/shield.tscn")
 
 const SHIELD_OFFSET = 200
 const OFFSET = 90
+
 var impact_warnings = {}
+var shield: Node2D
 
 
 func spawn_shield(color: Color):
-	var shield = SHIELD_PREFAB.instantiate()
+	if shield:
+		shield.queue_free()
+	shield = SHIELD_PREFAB.instantiate()
 	shield.color = color
 	self.add_child(shield)
+	shield.position.y -= SHIELD_OFFSET
 
 
 func add_incoming_missile(weapon: Node2D, language: Language, index: int):

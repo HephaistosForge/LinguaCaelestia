@@ -21,6 +21,7 @@ func init(color: Color, text: String, weapon: Node2D, parent: Node2D) -> void:
 	icon.modulate = color
 	add_weapon(weapon)
 	typed_label.correctly_typed.connect(parent._on_correctly_typed)
+	typed_label.set_color(color)
 	
 
 func add_weapon(weapon):
