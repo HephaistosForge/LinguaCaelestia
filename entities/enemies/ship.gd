@@ -24,6 +24,7 @@ func _ready():
 	if is_instance_valid(mothership):
 		projectile_targets = mothership.get_projectile_targets()
 	$TypedLabel.set_color(language.color)
+	AudioManager.play_ship_arrive()
 	
 func reduce_hp(by):
 	hp -= by
