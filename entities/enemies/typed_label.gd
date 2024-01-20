@@ -3,6 +3,7 @@ extends Node2D
 signal correctly_typed(Node2D)
 
 @export var color: Color = Color.RED
+var language: Language
 
 var map_weird_chars = {
 	"â": "a",
@@ -32,6 +33,10 @@ func set_text(text: String):
 func set_color(_color: Color):
 	self.color = _color
 	$Typed.modulate = self.color
+	
+
+func set_language(_language: Language):
+	self.language = _language
 
 
 func normalized_string(string: String):

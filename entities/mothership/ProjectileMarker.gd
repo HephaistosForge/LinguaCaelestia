@@ -10,11 +10,12 @@ var impact_warnings = {}
 var shield: Node2D
 
 
-func spawn_shield(color: Color):
-	if shield:
+func spawn_shield(language: Language):
+	if is_instance_valid(shield):
 		shield.queue_free()
 	shield = SHIELD_PREFAB.instantiate()
-	shield.color = color
+	shield.color = language.color
+	shield.language = language
 	self.add_child(shield)
 	shield.position.y -= SHIELD_OFFSET
 
@@ -30,7 +31,7 @@ func display_impact_warning(weapon: Node2D, language: Language, index: int):
 	var warning = INCOMING_MISSILE_WARNING_PREFAB.instantiate()
 	impact_warnings[language] = warning
 	add_child(warning)
-	warning.init(language.color, language.shield_words[index], weapon, self)
+	warning.init(language, language.color, language.shield_words[index], weapon, self)
 	refresh_warning_positions()
 	warning.on_dismiss.connect(_on_impact_warning_dismissed)
 
@@ -44,8 +45,12 @@ func refresh_warning_positions():
 		impact_warnings.values()[index].position.y -= (index + 1) * OFFSET
 
 
-func _on_correctly_typed(label):
-	spawn_shield(label.color)
+func _on_correctly_typed(correctly_typed):
+	var language = correctly_typed.language
+	impact_warnings[language].dismiss_warning()
+	impact_warnings.erase(language)
+	spawn_shield(language)
+	
 
 
 func _on_impact_warning_dismissed(warning):

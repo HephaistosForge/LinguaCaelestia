@@ -1,3 +1,7 @@
-[gd_resource type="Theme" format=3 uid="uid://c482k53sm2txa"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c482k53sm2txa"]
+
+[ext_resource type="FontFile" uid="uid://durggn5l07xfn" path="res://ui/fonts/NovaSquare-Regular.ttf" id="1_y08l4"]
 
 [resource]
+default_font = ExtResource("1_y08l4")
+Label/fonts/font = ExtResource("1_y08l4")

@@ -29,8 +29,4 @@ func handle_death() -> void:
 	self.queue_free()
 
 
-func spawn_shield(projectile_target: Node2D):
-	pass
-	
-
 

@@ -16,8 +16,9 @@ func _ready() -> void:
 	tween.set_loops(999)
 
 
-func init(color: Color, text: String, weapon: Node2D, parent: Node2D) -> void:
+func init(language: Language, color: Color, text: String, weapon: Node2D, parent: Node2D) -> void:
 	typed_label.set_text(text)
+	typed_label.set_language(language)
 	icon.modulate = color
 	add_weapon(weapon)
 	typed_label.correctly_typed.connect(parent._on_correctly_typed)
