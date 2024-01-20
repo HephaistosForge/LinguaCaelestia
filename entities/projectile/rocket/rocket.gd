@@ -49,7 +49,6 @@ func destroy():
 		
 func _on_area_entered(area):
 	if area.is_in_group("shield"):
-		print(area)
 		if area.get_parent().language.language == language.language:
 			destroy()
 			return

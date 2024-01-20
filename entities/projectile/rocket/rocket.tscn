@@ -12,7 +12,7 @@ offsets = PackedFloat32Array(0, 0.403509, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dx7pu"]
-size = Vector2(10, 40)
+size = Vector2(8, 31)
 
 [node name="Rocket" type="Area2D"]
 collision_layer = 4
@@ -35,7 +35,7 @@ color_ramp = SubResource("Gradient_j30mh")
 texture = ExtResource("1_ekkc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_dx7pu")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

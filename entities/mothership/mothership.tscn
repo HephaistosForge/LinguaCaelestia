@@ -25,10 +25,10 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_1fvu3")
 
 [node name="RocketLaunchPosition" parent="." instance=ExtResource("2_qkcl2")]
-position = Vector2(-374, -28)
+position = Vector2(-1, -123)
 
 [node name="Laser" type="Sprite2D" parent="."]
-position = Vector2(352, -81)
+position = Vector2(3.05176e-05, -148)
 scale = Vector2(2.23438, 2.23438)
 texture = ExtResource("3_ca78k")
 
@@ -43,17 +43,17 @@ position = Vector2(350, -14)
 [node name="ProjectileTargets" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(353, 0)
+position = Vector2(353, -67)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D3" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(665, 0)
+position = Vector2(665, -67)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D4" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-315, 1)
+position = Vector2(-315, -66)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D5" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-595, 0)
+position = Vector2(-595, -67)
 script = ExtResource("7_ymlm2")
