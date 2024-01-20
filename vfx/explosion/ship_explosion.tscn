@@ -40,6 +40,7 @@ amount = 50
 process_material = SubResource("ParticleProcessMaterial_4oijl")
 texture = ExtResource("1_ducyw")
 lifetime = 2.0
+one_shot = true
 speed_scale = 2.0
 explosiveness = 0.41
 randomness = 0.31

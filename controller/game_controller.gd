@@ -57,10 +57,12 @@ func _random_enemy():
 	
 
 func _player_launch_rocket_at(node):
-	var rocket = rocket_scene.instantiate()
-	rocket.position = get_tree().get_first_node_in_group("rocket_launch_position").position
-	rocket.seek = node
-	add_child(rocket)
+	var rocket_launch_pos = get_tree().get_first_node_in_group("rocket_launch_position")
+	if is_instance_valid(rocket_launch_pos):
+		var rocket = rocket_scene.instantiate()
+		rocket.position = rocket_launch_pos.position
+		rocket.seek = node
+		add_child(rocket)
 
 func _on_text_edit_text_changed():
 	var text = $TextEdit.text

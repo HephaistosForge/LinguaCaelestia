@@ -22,13 +22,14 @@ texture = ExtResource("1_od66u")
 shape = SubResource("RectangleShape2D_jqkhx")
 
 [node name="TypedLabel" parent="." instance=ExtResource("3_lei02")]
-position = Vector2(0, -82)
+position = Vector2(0, -98)
 color = Color(0.305882, 0.745098, 0, 1)
 
 [node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_ts03s")]
 position = Vector2(-1, 54)
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

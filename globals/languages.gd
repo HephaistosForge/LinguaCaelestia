@@ -80,7 +80,7 @@ var LANGUAGES: Array[Language] = [
 			"Chargé de cours","amphithéâtre","Recherche","Campus","Bibliothèque","Journal",
 			"apprendre","Bâtiment","Langue","Philosophie","Ordinateur","Papier","Stylo",
 			"Dictionnaire","Formule","Nombre","Alphabet","Cours magistral","Exercice","Cantine",
-			"Carte d'étudiant","Horaire","Fachschaft","Travail de master","Frais d'études",
+			"Carte d'étudiant","Horaire","Département","Travail de master","Frais d'études",
 			"Règlement","Certificat","Bourse d'études","Excursion","Bar des étudiants","Fête",
 			"Fête du campus","Diplômé","Stage","Sécurité","Génie mécanique","Mathématiques",
 			"Soirée de fête","Informatique","Zéro","Un","Deux","Trois","Quatre","Cinq","Six",
