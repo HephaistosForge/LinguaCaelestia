@@ -10,7 +10,7 @@ var difficulty = 1
 
 
 var score_label: Label
-var increase_difficulty_at_score = [2, 9, 20, 40, 60, 100]
+var increase_difficulty_at_score = [2, 9, 20, 40, 60, 90, 120, 150, 180, 200, 250, 300, 350, 400, 450, 500]
 
 
 func _ready():
@@ -56,6 +56,8 @@ func _on_ship_destroyed(index):
 	score_label.text = str(score * 100)
 	if score in increase_difficulty_at_score:
 		difficulty += 1
+		if difficulty > 8:
+			$EnemySpawnTimer.wait_time -= 0.3
 	if score % 7 == 0:
 		spawn_health_pack()
 
