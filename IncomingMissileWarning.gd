@@ -10,7 +10,8 @@ signal on_dismiss
 
 
 func _ready() -> void:
-	tween = get_tree().create_tween()
+	create_tween().tween_property(icon, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween = create_tween()
 	tween.tween_property(icon, "scale", Vector2(1.3, 1.3), 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(icon, "scale", Vector2(1.0, 1.0), 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.set_loops(999)
@@ -34,6 +35,9 @@ func dismiss_warning():
 	on_dismiss.emit(self)
 	if tween.is_running:
 		tween.kill()
+	tween = create_tween()
+	tween.tween_property(icon, "scale", Vector2.ZERO, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
 	self.queue_free()
 
 

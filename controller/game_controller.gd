@@ -55,7 +55,6 @@ func _on_ship_destroyed(index):
 	target_occupants[index] = null
 	score += 1
 	score_label.text = str(score * 100)
-	print(difficulty, score)
 	if score in increase_difficulty_at_score:
 		difficulty += 1
 	if score % 7 == 0:

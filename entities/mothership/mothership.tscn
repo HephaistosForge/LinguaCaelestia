@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://baq4lpljix6qm"]
+[gd_scene load_steps=10 format=3 uid="uid://baq4lpljix6qm"]
 
 [ext_resource type="Texture2D" uid="uid://bxod2730lenna" path="res://resources/box.png" id="1_0wg1b"]
 [ext_resource type="Script" path="res://entities/mothership/mothership.gd" id="1_it0jo"]
@@ -7,33 +7,43 @@
 [ext_resource type="Texture2D" uid="uid://d0rtf686wl5ai" path="res://entities/mothership/shield_generator.png" id="4_6d8p0"]
 [ext_resource type="PackedScene" uid="uid://gdlg80cykwxt" path="res://controller/laser_launch_position.tscn" id="5_1g3ql"]
 [ext_resource type="Script" path="res://entities/mothership/ProjectileMarker.gd" id="7_ymlm2"]
+[ext_resource type="Texture2D" uid="uid://joiapcyskl4o" path="res://resources/mothership.png" id="8_exvfu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fvu3"]
-size = Vector2(1900, 171)
+[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_g6ssc"]
+segments = PackedVector2Array(1.945, 4.42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [node name="Mothership" type="Area2D" groups=["mothership"]]
 collision_mask = 0
 script = ExtResource("1_it0jo")
 
+[node name="Mothership" type="Sprite2D" parent="."]
+modulate = Color(0.576471, 0.537255, 0.419608, 1)
+position = Vector2(14, -371)
+scale = Vector2(0.952, 0.952)
+texture = ExtResource("8_exvfu")
+
 [node name="Sprite" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.290196, 0.254902, 0.25098, 1)
 scale = Vector2(7.48438, 0.820312)
 texture = ExtResource("1_0wg1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = -1
 position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_1fvu3")
+shape = SubResource("ConcavePolygonShape2D_g6ssc")
 
 [node name="RocketLaunchPosition" parent="." instance=ExtResource("2_qkcl2")]
 position = Vector2(-1, -123)
 
 [node name="Laser" type="Sprite2D" parent="."]
-position = Vector2(3.05176e-05, -148)
+position = Vector2(3.05176e-05, -140)
 scale = Vector2(2.23438, 2.23438)
 texture = ExtResource("3_ca78k")
 
 [node name="ShieldGenerator" type="Sprite2D" parent="."]
-position = Vector2(-3.05176e-05, 0.999985)
+modulate = Color(0.854902, 0.854902, 0.854902, 1)
+position = Vector2(-3.05176e-05, 8.99998)
 scale = Vector2(2, 2)
 texture = ExtResource("4_6d8p0")
 
@@ -43,17 +53,22 @@ position = Vector2(350, -14)
 [node name="ProjectileTargets" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(353, -67)
+position = Vector2(277, -101)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D3" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(665, -67)
+position = Vector2(643, -61)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D4" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-383, -66)
+position = Vector2(-280, -94)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D5" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-699, -67)
+position = Vector2(-648, -69)
 script = ExtResource("7_ymlm2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(14, -371)
+scale = Vector2(0.952, 0.952)
+polygon = PackedVector2Array(67, 239.2, 67, 242.6, 71.7, 266, 79.1, 277, 79.8, 277, 99, 295.1, 99, 297.5, 107, 309, 135, 311.1, 135, 313.2, 145.8, 324, 154.8, 324, 181, 321.2, 181, 320, 182, 283, 184.3, 283, 193.2, 275, 210.2, 275, 214, 275.6, 217, 268.6, 217, 254.9, 219.2, 238, 221.1, 238, 232.1, 226, 234.6, 226, 245.6, 221, 259.3, 221, 267, 223.6, 267, 225, 276, 232, 276, 238, 278.7, 258.3, 291.5, 251, 297.8, 251, 311, 249.8, 311, 251.5, 341, 260.5, 341, 262, 353, 271, 353, 273.3, 356, 277.3, 356, 312, 362, 320.4, 362, 345, 363.1, 345, 387, 348.3, 387, 350.2, 390.5, 353.7, 392.5, 351.6, 395, 352.7, 395, 354.4, 400.1, 362, 419, 362, 419, 364.4, 423, 370, 479, 370, 479, 372.3, 505.9, 403, 510.8, 403, 512.8, 405, 553.1, 405, 582, 372.3, 582, 298, 584.2, 298, 594.2, 288, 609.8, 288, 619, 287.2, 639.2, 267, 687, 267, 687, 268.8, 695, 272.8, 695, 274.2, 709.8, 289, 732, 289, 732, 291.1, 743, 300.1, 743, 388, 762.7, 388, 797.7, 418, 799.5, 418, 809.5, 413, 830.2, 413, 831.5, 411.6, 834, 412.7, 834, 414, 846, 423, 846, 441, 851, 445, 851, 457.1, 857, 462.1, 857, 468, 857.8, 468, 862, 472.2, 862, 500, -897, 500, -897, 471.9, -892, 468.9, -892, 462.1, -886, 457.1, -886, 445, -881, 441, -881, 422, -878.9, 422, -872.9, 415, -870.1, 415, -868.1, 412, -866, 412, -843, 413, -843, 414.6, -832.2, 418.4, -795.7, 388, -776, 388, -776, 299, -773.7, 299, -760.7, 288, -756.1, 288, -740, 287.1, -718.8, 267, -671, 267, -671, 269.2, -653.2, 287, -642.9, 287, -626, 288.1, -626, 290.1, -614, 301.1, -614, 303, -615, 371.2, -587.1, 405, -547, 405, -547, 404.4, -538, 402.4, -538, 401.2, -508.9, 370, -456.1, 370, -451.1, 362, -433.8, 362, -419.9, 347, -416.1, 347, -401, 346.1, -395, 342.8, -395, 321, -393.2, 321, -388, 310.5, -388, 304, -391.3, 281, -389.7, 281, -387.7, 269, -385.7, 269, -375.8, 260, -370.4, 260, -342.3, 250, -339.9, 250, -323, 251.1, -323, 252.9, -313.4, 259, -309, 259, -309, 228.2, -302.8, 222, -296, 222, -286.7, 215, -273.3, 215, -257, 227, -257, 229.3, -250, 238.3, -250, 242, -248.1, 275, -246.6, 275, -239.7, 278, -219, 278, -219, 280, -215, 283, -215, 285.7, -212.6, 300, -214.2, 300, -215.8, 314, -212.6, 322, -212, 322, -177.7, 323, -170.1, 311, -144.7, 311, -129, 289, -127.8, 289, -106, 266.2, -103.8, 245, -92.437, 238.445)
