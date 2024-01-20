@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dswwrb6jo8wxc"]
+
+[ext_resource type="Script" path="res://ui/main_menu/how_to_play/how_to_play_item.gd" id="1_6mblk"]
+
+[node name="HowToPlayItem" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6mblk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+fit_content = true

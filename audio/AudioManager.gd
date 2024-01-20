@@ -4,7 +4,26 @@ const background_music = [
 	preload("res://audio/soundtrack.mp3")
 	]
 
-const alarm = []
+const missile_explode = [
+	preload("res://audio/missile_explosion.wav")
+]
+const missile_launch = [
+	preload("res://audio/missile_launch.wav")
+]
+const missile_lock = [
+	preload("res://audio/missile_lock.wav")
+]
+const shield_hit = [
+	preload("res://audio/shieldhit_1.wav"),
+	preload("res://audio/shieldhit_2.wav")
+]
+const shield_background = [
+	preload("res://audio/shield_background.mp3")
+]
+const ship_arrive = [
+	preload("res://audio/ship_arrive.wav")
+]
+
 const button_hover = [
 ]
 
@@ -23,6 +42,26 @@ func _ready() -> void:
 	set_music_volume(music_volume)
 
 # SOUNDS
+
+
+
+func play_missile_launch():
+	create_sound_player(missile_launch.pick_random(), null, false)
+
+
+func play_missile_hit():
+	create_sound_player(missile_explode.pick_random(), null, false)
+
+
+func play_missile_lock():
+	create_sound_player(missile_lock.pick_random(), null, false)
+
+
+func play_shield_hit():
+	create_sound_player(shield_hit.pick_random(), null, false)
+
+func play_ship_arrive():
+	create_sound_player(ship_arrive.pick_random(), null, false)
 
 func play_button_hover():
 	if not button_hover.is_empty():

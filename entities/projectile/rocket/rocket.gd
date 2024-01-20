@@ -15,6 +15,9 @@ var seek: Node
 var speed = 200
 var direction = Vector2(0, -1)
 
+func _ready():
+	AudioManager.play_missile_launch()
+
 func set_as_enemy_rocket():
 	direction = Vector2(0, 1)
 	rotate(PI)
@@ -50,10 +53,12 @@ func destroy():
 func _on_area_entered(area):
 	if area.is_in_group("shield"):
 		if area.get_parent().language.language == language.language:
+			AudioManager.play_shield_hit()
 			destroy()
 			return
 	if is_same_or_parent_of(area, seek):
 		area.reduce_hp(damage)
+		AudioManager.play_missile_hit()
 		destroy()
 		return
 

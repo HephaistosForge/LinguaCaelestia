@@ -2,12 +2,14 @@ extends Control
 
 const CREDITS_PREFAB = preload("res://ui/main_menu/credits/Credits.tscn")
 const OPTIONS_PREFAB = preload("res://ui/main_menu/options/options.tscn")
+const HOW_TO_PLAY_PREFAB = preload("res://ui/main_menu/how_to_play/how_to_play.tscn")
 
 enum display_types {
 	OPTIONS,
 	CREDITS,
 	MULTIPLAYER,
-	MULTIPLAYER_LOBBY
+	MULTIPLAYER_LOBBY,
+	HOW_TO_PLAY
 }
 
 var max_parallax = 20000
@@ -71,3 +73,12 @@ func _on_button_hover() -> void:
 func _on_button_click() -> void:
 	AudioManager.play_button_click()
 
+
+
+func _on_how_to_play_pressed() -> void:
+	if currently_displayed != null:
+		currently_displayed.queue_free()
+	var how_to_play = HOW_TO_PLAY_PREFAB.instantiate()
+	$MarginContainer/VBoxContainer.add_child(how_to_play)
+	currently_displayed = how_to_play
+	currently_displayed_type = display_types.HOW_TO_PLAY
