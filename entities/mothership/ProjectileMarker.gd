@@ -1,0 +1,51 @@
+extends Marker2D
+
+const INCOMING_MISSILE_WARNING_PREFAB = preload("res://player/ui/incoming_missile_warning.tscn")
+const SHIELD_PREFAB = preload("res://entities/mothership/shield.tscn")
+
+const SHIELD_OFFSET = 200
+const OFFSET = 90
+var impact_warnings = {}
+
+
+func spawn_shield(color: Color):
+	var shield = SHIELD_PREFAB.instantiate()
+	shield.color = color
+	self.add_child(shield)
+
+
+func add_incoming_missile(weapon: Node2D, language: Language, index: int):
+	if impact_warnings.has(language) and is_instance_valid(impact_warnings):
+		impact_warnings[language].add_weapon(weapon)
+	else:
+		display_impact_warning(weapon, language, index)
+
+
+func display_impact_warning(weapon: Node2D, language: Language, index: int):
+	var warning = INCOMING_MISSILE_WARNING_PREFAB.instantiate()
+	impact_warnings[language] = warning
+	add_child(warning)
+	warning.init(language.color, language.shield_words[index], weapon, self)
+	refresh_warning_positions()
+	warning.on_dismiss.connect(_on_impact_warning_dismissed)
+
+
+func refresh_warning_positions():
+	for index in len(impact_warnings.keys()):
+		if not is_instance_valid(impact_warnings.values()[index]):
+			continue
+		impact_warnings.values()[index].global_position = self.global_position
+		
+		impact_warnings.values()[index].position.y -= (index + 1) * OFFSET
+
+
+func _on_correctly_typed(label):
+	spawn_shield(label.color)
+
+
+func _on_impact_warning_dismissed(warning):
+	if not is_instance_valid(self):
+		return
+	impact_warnings.erase(warning)
+	refresh_warning_positions()
+

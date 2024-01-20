@@ -3,6 +3,10 @@ extends Node2D
 @onready var icon = $Icon
 @onready var typed_label = $TypedLabel
 var tween
+var weapons = []
+
+
+signal on_dismiss
 
 
 func _ready() -> void:
@@ -12,18 +16,26 @@ func _ready() -> void:
 	tween.set_loops(999)
 
 
-func init(color: Color, text: String, weapon: Node2D) -> void:
+func init(color: Color, text: String, weapon: Node2D, parent: Node2D) -> void:
 	typed_label.set_text(text)
 	icon.modulate = color
+	add_weapon(weapon)
+	typed_label.correctly_typed.connect(parent._on_correctly_typed)
+	
+
+func add_weapon(weapon):
+	self.weapons.append(weapon)
 	weapon.destroyed.connect(_on_weapon_destroyed)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_weapon_destroyed(_weapon_ref):
+func dismiss_warning():
+	on_dismiss.emit(self)
 	if tween.is_running:
 		tween.kill()
 	self.queue_free()
+
+
+func _on_weapon_destroyed(_weapon_ref):
+	self.weapons.erase(_weapon_ref)
+	if self.weapons.is_empty():
+		dismiss_warning()

@@ -2,7 +2,7 @@ extends Area2D
 
 signal player_death
 
-const INCOMING_MISSILE_WARNING_PREFAB = preload("res://player/ui/incoming_missile_warning.tscn")
+
 #const SHIELD_PREFAB = preload()
 
 var max_hp = 1000
@@ -16,10 +16,7 @@ func get_projectile_targets() -> Array[Node]:
 func display_impact_warning(projectile_target: Node2D, weapon: Node2D, language: Language) -> void:
 	if not projectile_target is Marker2D:
 		return
-	var warning = INCOMING_MISSILE_WARNING_PREFAB.instantiate()
-	self.add_child(warning)
-	warning.init(language.color, language.shield_words.pick_random(), weapon)
-	warning.global_position = projectile_target.global_position
+	projectile_target.add_incoming_missile(weapon, language, projectile_target.get_index())
 	
 
 

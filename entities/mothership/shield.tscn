@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1kjlff4sq341"]
+
+[ext_resource type="Script" path="res://entities/mothership/Shield.gd" id="1_c6qsf"]
+[ext_resource type="Shader" path="res://vfx/bottom_fade_shader/bottom_fade.gdshader" id="2_blg41"]
+[ext_resource type="Texture2D" uid="uid://d1nw0l6als0iv" path="res://resources/Shield.png" id="3_ntueu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ht3lm"]
+shader = ExtResource("2_blg41")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3wbjr"]
+radius = 54.0
+
+[node name="Shield" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_c6qsf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ht3lm")
+texture = ExtResource("3_ntueu")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 24)
+shape = SubResource("CircleShape2D_3wbjr")

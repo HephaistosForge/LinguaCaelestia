@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://baq4lpljix6qm"]
+[gd_scene load_steps=9 format=3 uid="uid://baq4lpljix6qm"]
 
 [ext_resource type="Texture2D" uid="uid://bxod2730lenna" path="res://resources/box.png" id="1_0wg1b"]
 [ext_resource type="Script" path="res://entities/mothership/mothership.gd" id="1_it0jo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dxk5drkxr5tbt" path="res://entities/mothership/laser.png" id="3_ca78k"]
 [ext_resource type="Texture2D" uid="uid://d0rtf686wl5ai" path="res://entities/mothership/shield_generator.png" id="4_6d8p0"]
 [ext_resource type="PackedScene" uid="uid://gdlg80cykwxt" path="res://controller/laser_launch_position.tscn" id="5_1g3ql"]
+[ext_resource type="Script" path="res://entities/mothership/ProjectileMarker.gd" id="7_ymlm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fvu3"]
 size = Vector2(1900, 171)
@@ -41,15 +42,20 @@ position = Vector2(350, -14)
 [node name="ProjectileTargets" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="ProjectileTargets"]
+script = ExtResource("7_ymlm2")
 
 [node name="Marker2D2" type="Marker2D" parent="ProjectileTargets"]
 position = Vector2(353, 0)
+script = ExtResource("7_ymlm2")
 
 [node name="Marker2D3" type="Marker2D" parent="ProjectileTargets"]
 position = Vector2(665, 0)
+script = ExtResource("7_ymlm2")
 
 [node name="Marker2D4" type="Marker2D" parent="ProjectileTargets"]
 position = Vector2(-315, 1)
+script = ExtResource("7_ymlm2")
 
 [node name="Marker2D5" type="Marker2D" parent="ProjectileTargets"]
 position = Vector2(-595, 0)
+script = ExtResource("7_ymlm2")
