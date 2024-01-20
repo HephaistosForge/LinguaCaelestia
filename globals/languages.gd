@@ -12,7 +12,7 @@ var ENGLISH: Language = Language.new(
 		"Mechanical engineering","Mathematics","After work hours","Computer Science","Zero",
 		"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"
 	], 
-	["Shield"],
+	["Shield", "defend", "block", "protect", "Guard"],
 	["Rocket","Laser"],
 	preload("res://entities/enemies/latin/cruiser.tscn"),
 )
@@ -30,7 +30,7 @@ var LANGUAGES: Array[Language] = [
 			"Maschinenbau","Mathematik","Feierabend","Informatik","Null","Eins","Zwei","Drei",
 			"Vier","Fünf","Sechs","Sieben","Acht","Neun","Zehn"
 		], 
-		["Schild"],
+		["Schild", "verteidigen", "blocken", "schützen", "Wächter"],
 		["Rakete","Laser"],
 		preload("res://entities/enemies/german/cruiser.tscn"),
 	),
@@ -48,7 +48,7 @@ var LANGUAGES: Array[Language] = [
 			"disciplina informatica"," nullus ","unus ","duo ","tres ","quattuor ","quinque",
 			"sex","septem ","octo","novem","decem"
 		], 
-		["scutum"],
+		["scutum", "defensio", "arcēre", "tueri", "custodia"],
 		["missile","telum"],
 		preload("res://entities/enemies/latin/cruiser.tscn"),
 	),
@@ -65,7 +65,7 @@ var LANGUAGES: Array[Language] = [
 			"ʻepekema kamepiula","ʻole","ʻekahi","ʻelua","ʻekolu","eha","ʻelima","ʻeono","ʻehiku",
 			"ʻewalu","ʻeiwa","ʻumi"
 		],
-		["pale pale"],
+		["pale pale", "pale aku", "poloka", "e hoomalu", "kiai"],
 		["pana", "ihe"],
 		preload("res://entities/enemies/hawaiian/cruiser.tscn"),
 	),
@@ -82,7 +82,7 @@ var LANGUAGES: Array[Language] = [
 			"Soirée de fête","Informatique","Zéro","Un","Deux","Trois","Quatre","Cinq","Six",
 			"Sept","Huit","Neuf","Dix"
 		], 
-		["Bouclier"],
+		["Bouclier", "défendent", "bloquer", "protègent", "Gardien"],
 		["Missile","Laser"],
 		preload("res://entities/enemies/french/cruiser.tscn"),
 	),
