@@ -16,8 +16,8 @@ func display_impact_warning(projectile_target: Node2D, weapon: Node2D, language:
 	if not projectile_target is Marker2D:
 		return
 	var warning = INCOMING_MISSILE_WARNING_PREFAB.instantiate()
-	warning.set_input_text(language.shield_words.pick_random())
 	self.add_child(warning)
+	warning.set_input_text(language.shield_words.pick_random())
 	warning.global_position = projectile_target.global_position
 	weapon.destroyed.connect(_on_weapon_destroyed)
 

@@ -1,10 +1,12 @@
 extends Area2D
 
+signal destroyed(Area2D)
 
 @export var rotation_speed = 3
 @export var max_speed = 400
 @export var accel = 200
 @export var damage = 100
+
 
 var explosion_scene = preload("res://vfx/explosion/explosion.tscn")
 
@@ -18,6 +20,10 @@ func set_as_enemy_rocket():
 	collision_mask = 1
 
 func _physics_process(delta):
+	if not is_instance_valid(seek):
+		queue_free()
+		return
+		
 	speed = min(max_speed, speed+accel*delta)
 	global_position += direction * speed * delta
 	var target_dir = global_position.direction_to(seek.global_position)
@@ -26,7 +32,7 @@ func _physics_process(delta):
 	direction = new_direction
 
 func is_same_or_parent_of(parent, child) -> bool:
-	if parent == null:
+	if child == null:
 		return false
 	if parent == child:
 		return true
@@ -34,8 +40,10 @@ func is_same_or_parent_of(parent, child) -> bool:
 
 func _on_area_entered(area):
 	if is_same_or_parent_of(area, seek):
-		# area.reduce_hp(damage) # TODO mothership
+		area.reduce_hp(damage) # TODO mothership
 		var explosion = explosion_scene.instantiate()
+		explosion.set_dir(direction)
 		explosion.position = position
 		add_sibling(explosion)
+		destroyed.emit(self)
 		queue_free()
