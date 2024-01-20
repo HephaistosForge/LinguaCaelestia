@@ -60,7 +60,7 @@ func play_missile_launch():
 
 
 func play_missile_hit():
-	create_sound_player(missile_explode.pick_random(), null, false, 0.05)
+	create_sound_player(missile_explode.pick_random(), null, false, 0.1)
 
 
 func play_missile_lock():
@@ -85,7 +85,7 @@ func play_key_press():
 	create_sound_player(type_writer.pick_random(), null, true)
 	
 func play_typewriter_bell():
-	create_sound_player(type_writer_bell.pick_random(), null, true, 0.4)
+	create_sound_player(type_writer_bell.pick_random(), null, true, 0.25)
 
 # HELPER
 

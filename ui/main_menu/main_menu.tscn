@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://co1vd8dbimgqj"]
+[gd_scene load_steps=5 format=3 uid="uid://co1vd8dbimgqj"]
 
 [ext_resource type="Theme" uid="uid://dyt6gjv55e2dy" path="res://ui/main_menu/menu_theme.tres" id="1_lfw8c"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="2_va1mr"]
 [ext_resource type="PackedScene" uid="uid://coxunspw3wxa8" path="res://vfx/background/background.tscn" id="3_dsy4x"]
+[ext_resource type="PackedScene" uid="uid://c1tfbiakb1xtq" path="res://audio/AudioManager.tscn" id="4_o7pio"]
 
 [node name="MainMenu" type="Control" groups=["main_menu"]]
 layout_mode = 3
@@ -125,7 +126,10 @@ size_flags_horizontal = 3
 
 [node name="Background" parent="." instance=ExtResource("3_dsy4x")]
 z_index = 5
-position = Vector2(1015, 0)
+position = Vector2(936, 1140)
+rotation = -3.14159
+
+[node name="AudioManager" parent="." instance=ExtResource("4_o7pio")]
 
 [connection signal="mouse_entered" from="VBoxContainer2/HBoxContainer/MarginContainer2/VBoxContainer/Play" to="." method="_on_button_hover"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/MarginContainer2/VBoxContainer/Play" to="." method="_on_play_pressed"]
