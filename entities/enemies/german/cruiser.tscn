@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d24o3v76dcv2o"]
+[gd_scene load_steps=8 format=3 uid="uid://d24o3v76dcv2o"]
 
 [ext_resource type="Script" path="res://entities/enemies/german/german.gd" id="1_dbg30"]
 [ext_resource type="Texture2D" uid="uid://cjmsxg2efhpti" path="res://entities/enemies/german/german_cruiser.png" id="1_gk2wh"]
@@ -9,10 +9,19 @@
 radius = 44.0
 height = 92.0
 
+[sub_resource type="Curve" id="Curve_i5gts"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.696594, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_438rd"]
+offsets = PackedFloat32Array(0.0169492, 0.413559, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.488026, 0.196034, 0.200093, 1, 1, 1, 0, 1)
+
 [node name="GermanCruiser" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dbg30")
+breathing_time = 4.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
@@ -33,5 +42,24 @@ position = Vector2(0, 12)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 7.286
 autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(1, -43)
+amount = 150
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 22.56
+direction = Vector2(0, -1)
+spread = 7.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 87.72
+initial_velocity_max = 210.53
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_i5gts")
+color_ramp = SubResource("Gradient_438rd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

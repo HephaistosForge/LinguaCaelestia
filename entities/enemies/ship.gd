@@ -16,6 +16,7 @@ const explosion_scene = preload("res://vfx/explosion/ship_explosion.tscn")
 @onready var mothership = get_tree().get_first_node_in_group("mothership")
 var projectile_targets: Array
 var target_override = null
+@export var breathing_time = 2.0
 
 signal enemy_typed_label(Area2D)
 
@@ -26,6 +27,13 @@ func _ready():
 		projectile_targets = mothership.get_projectile_targets()
 	$TypedLabel.set_color(language.color)
 	AudioManager.play_ship_arrive()
+	
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ONE * 1.1, breathing_time) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "scale", Vector2.ONE, breathing_time) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
+	tween.set_loops(999)
 	
 func reduce_hp(by):
 	hp -= by

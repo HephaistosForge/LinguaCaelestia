@@ -21,7 +21,6 @@ func spawn_shield(language: Language):
 
 
 func add_incoming_missile(weapon: Node2D, language: Language, index: int):
-	print_debug(impact_warnings)
 	if impact_warnings.has(language.language) and is_instance_valid(impact_warnings[language.language]):
 		impact_warnings[language.language].add_weapon(weapon)
 	else:

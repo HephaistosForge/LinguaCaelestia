@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://e6gbe3x04gd3"]
+[gd_scene load_steps=8 format=3 uid="uid://e6gbe3x04gd3"]
 
 [ext_resource type="Script" path="res://entities/enemies/french/french.gd" id="1_0ocej"]
 [ext_resource type="Texture2D" uid="uid://cpmmpg3s4xp2k" path="res://entities/enemies/french/french_cruiser.png" id="1_j57ca"]
@@ -6,12 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_1oudg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
-size = Vector2(28, 106)
+size = Vector2(10, 126)
+
+[sub_resource type="Curve" id="Curve_y8s2f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pcchd"]
+offsets = PackedFloat32Array(0.0135593, 0.40339, 0.847458)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0, 0.440473, 0.910786, 1)
 
 [node name="FrenchCruiser" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_0ocej")
+breathing_time = 1.3
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2, 7)
@@ -19,6 +28,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_j57ca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_jqkhx")
 
 [node name="TypedLabel" parent="." instance=ExtResource("2_376hm")]
@@ -31,5 +41,23 @@ position = Vector2(-1, 73)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
 autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-1, -75)
+amount = 50
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 210.52
+initial_velocity_max = 333.33
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_y8s2f")
+color_ramp = SubResource("Gradient_pcchd")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,17 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2hku02w8pf8g"]
+[gd_scene load_steps=8 format=3 uid="uid://d2hku02w8pf8g"]
 
 [ext_resource type="Texture2D" uid="uid://dlr62jd136obn" path="res://entities/enemies/hawaiian/hawaiian_cruiser.png" id="1_od66u"]
 [ext_resource type="Script" path="res://entities/enemies/hawaiian/hawaiian.gd" id="1_v62ki"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_lei02"]
 [ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_ts03s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
-size = Vector2(52, 106)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgaim"]
+radius = 21.0
+height = 98.0
+
+[sub_resource type="Curve" id="Curve_ymhfq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gq0qt"]
+offsets = PackedFloat32Array(0.0135593, 0.413559, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0.458824, 1, 1, 1, 0, 1)
 
 [node name="HawaiianCruiser" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_v62ki")
+breathing_time = 2.5
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2, -3)
@@ -19,7 +29,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_od66u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_jqkhx")
+shape = SubResource("CapsuleShape2D_tgaim")
 
 [node name="TypedLabel" parent="." instance=ExtResource("3_lei02")]
 position = Vector2(0, -98)
@@ -31,5 +41,39 @@ position = Vector2(-1, 54)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.5
 autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-22, -60)
+amount = 50
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 8.48
+direction = Vector2(0, -1)
+spread = 3.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.44
+initial_velocity_max = 175.44
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ymhfq")
+color_ramp = SubResource("Gradient_gq0qt")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(18, -60)
+amount = 50
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 8.48
+direction = Vector2(0, -1)
+spread = 3.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.44
+initial_velocity_max = 175.44
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ymhfq")
+color_ramp = SubResource("Gradient_gq0qt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
