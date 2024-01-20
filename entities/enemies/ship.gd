@@ -23,6 +23,7 @@ func _ready():
 	$TypedLabel.connect("correctly_typed", _on_typed_label)
 	if is_instance_valid(mothership):
 		projectile_targets = mothership.get_projectile_targets()
+	$TypedLabel.set_color(language.color)
 	
 func reduce_hp(by):
 	hp -= by
@@ -43,7 +44,8 @@ func launch_rockets(size, speed, accel, max_speed, damage):
 			rocket.accel = accel
 			rocket.max_speed = max_speed
 			rocket.seek = target
-			rocket.rotation_speed = 0.2
+			rocket.rotation_speed = 1
+			rocket.language = language
 			add_sibling(rocket)
 			rocket.global_position = child.global_position
 			if is_instance_valid(mothership):

@@ -7,6 +7,7 @@ signal destroyed(Area2D)
 @export var accel = 200
 @export var damage = 100
 
+var language = Lang.ENGLISH
 
 var explosion_scene = preload("res://vfx/explosion/explosion.tscn")
 
@@ -17,7 +18,7 @@ var direction = Vector2(0, -1)
 func set_as_enemy_rocket():
 	direction = Vector2(0, 1)
 	rotate(PI)
-	collision_mask = 1
+	collision_mask = 1 + 8
 
 func _physics_process(delta):
 	if not is_instance_valid(seek):
@@ -37,13 +38,23 @@ func is_same_or_parent_of(parent, child) -> bool:
 	if parent == child:
 		return true
 	return is_same_or_parent_of(parent, child.get_parent())
-
+	
+func destroy():
+	var explosion = explosion_scene.instantiate()
+	explosion.set_dir(direction)
+	explosion.position = position
+	add_sibling(explosion)
+	destroyed.emit(self)
+	queue_free()
+		
 func _on_area_entered(area):
+	if area.is_in_group("shield"):
+		print(area)
+		if area.get_parent().language.language == language.language:
+			destroy()
+			return
 	if is_same_or_parent_of(area, seek):
 		area.reduce_hp(damage)
-		var explosion = explosion_scene.instantiate()
-		explosion.set_dir(direction)
-		explosion.position = position
-		add_sibling(explosion)
-		destroyed.emit(self)
-		queue_free()
+		destroy()
+		return
+

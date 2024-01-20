@@ -6,3 +6,7 @@ func _ready():
 
 func set_dir(vector):
 	$Particles.direction = vector
+
+
+func _on_particles_finished():
+	queue_free()

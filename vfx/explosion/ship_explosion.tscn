@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bneu2uwwi2uem"]
+[gd_scene load_steps=5 format=3 uid="uid://bneu2uwwi2uem"]
 
 [ext_resource type="Texture2D" uid="uid://8eu0fbt6ane4" path="res://vfx/explosion/ship_exp.png" id="1_ducyw"]
 [ext_resource type="Script" path="res://vfx/explosion/ship_explosion.gd" id="1_rlscr"]
@@ -15,32 +15,29 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 0.872476, 0.124619, 1, 1, 0.639216, 0, 
 metadata/_snap_enabled = true
 metadata/_snap_count = 35
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_k5s1r"]
-gradient = SubResource("Gradient_5cwy0")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4oijl"]
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 120.0
-angle_max = 720.0
-gravity = Vector3(0, 0, 0)
-scale_min = 2.2
-scale_max = 2.2
-color_ramp = SubResource("GradientTexture1D_k5s1r")
-anim_speed_min = 5.0
-anim_speed_max = 7.0
-
 [node name="ShipExplosion" type="Node2D"]
 script = ExtResource("1_rlscr")
 
-[node name="Particles" type="GPUParticles2D" parent="."]
+[node name="Particles" type="CPUParticles2D" parent="."]
 material = SubResource("CanvasItemMaterial_ibvh2")
 emitting = false
 amount = 50
-process_material = SubResource("ParticleProcessMaterial_4oijl")
-texture = ExtResource("1_ducyw")
 lifetime = 2.0
 one_shot = true
 speed_scale = 2.0
-explosiveness = 0.41
+explosiveness = 0.67
 randomness = 0.31
+fixed_fps = 60
+draw_order = 1
+texture = ExtResource("1_ducyw")
+emission_shape = 1
+emission_sphere_radius = 60.0
+gravity = Vector2(0, 0)
+angle_max = 720.0
+scale_amount_min = 2.2
+scale_amount_max = 2.2
+color_ramp = SubResource("Gradient_5cwy0")
+anim_speed_min = 5.0
+anim_speed_max = 7.0
+
+[connection signal="finished" from="Particles" to="." method="_on_particles_finished"]

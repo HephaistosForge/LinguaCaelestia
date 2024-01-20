@@ -16,7 +16,7 @@ size = Vector2(10, 40)
 
 [node name="Rocket" type="Area2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 script = ExtResource("1_cnoo4")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
