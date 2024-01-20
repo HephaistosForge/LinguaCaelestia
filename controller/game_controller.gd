@@ -7,6 +7,7 @@ var target_occupants: Array
 var score = 0
 var difficulty = 1
 
+var score_label: Label
 var increase_difficulty_at_score = [2, 5, 10, 20, 30, 50]
 
 func _ready():
@@ -15,6 +16,7 @@ func _ready():
 		target_occupants.append(null)
 	_spawn_enemy()
 	$TextEdit.grab_focus()
+	score_label = get_tree().get_first_node_in_group("score_label")
 
 func _process(delta):
 	pass
@@ -51,6 +53,7 @@ func _spawn_enemy():
 func _on_ship_destroyed(index):
 	target_occupants[index] = null
 	score += 1
+	score_label.text = str(score * 100)
 	print(difficulty, score)
 	if score in increase_difficulty_at_score:
 

@@ -46,30 +46,30 @@ func _ready() -> void:
 
 
 func play_missile_launch():
-	create_sound_player(missile_launch.pick_random(), null, false)
+	create_sound_player(missile_launch.pick_random(), null, false, 0.05)
 
 
 func play_missile_hit():
-	create_sound_player(missile_explode.pick_random(), null, false)
+	create_sound_player(missile_explode.pick_random(), null, false, 0.05)
 
 
 func play_missile_lock():
-	create_sound_player(missile_lock.pick_random(), null, false)
+	create_sound_player(missile_lock.pick_random(), null, false, 0.05)
 
 
 func play_shield_hit():
-	create_sound_player(shield_hit.pick_random(), null, false)
+	create_sound_player(shield_hit.pick_random(), null, false, 0.05)
 
 func play_ship_arrive():
-	create_sound_player(ship_arrive.pick_random(), null, false)
+	create_sound_player(ship_arrive.pick_random(), null, false, 0.05)
 
 func play_button_hover():
 	if not button_hover.is_empty():
-		create_sound_player(button_hover.pick_random(), null, false)
+		create_sound_player(button_hover.pick_random(), null, false, 0.2)
 	
 func play_button_click():
 	if not button_click.is_empty():
-		create_sound_player(button_click.pick_random(), null, false)
+		create_sound_player(button_click.pick_random(), null, false, 0.2)
 
 # HELPER
 

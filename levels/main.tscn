@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://kvgyoarn6ghc"]
+[gd_scene load_steps=7 format=3 uid="uid://kvgyoarn6ghc"]
 
 [ext_resource type="Texture2D" uid="uid://bggybar3yr43c" path="res://resources/background.jpg" id="1_ahj1x"]
 [ext_resource type="PackedScene" uid="uid://baq4lpljix6qm" path="res://entities/mothership/mothership.tscn" id="2_nbpvr"]
 [ext_resource type="PackedScene" uid="uid://neuxgsxgw5ij" path="res://controller/enemy_target_position.tscn" id="3_giaah"]
 [ext_resource type="PackedScene" uid="uid://by76rqpob6t67" path="res://controller/game_controller.tscn" id="4_k3rsk"]
 [ext_resource type="PackedScene" uid="uid://coxunspw3wxa8" path="res://vfx/background/background.tscn" id="5_t8hon"]
+[ext_resource type="FontFile" uid="uid://durggn5l07xfn" path="res://ui/fonts/NovaSquare-Regular.ttf" id="6_0sf4t"]
 
 [node name="Main" type="Node2D"]
 
@@ -46,3 +47,17 @@ position = Vector2(0, 241)
 [node name="Background2" parent="." instance=ExtResource("5_t8hon")]
 z_index = -10
 position = Vector2(-105, -616)
+
+[node name="ScoreLabel" type="Label" parent="." groups=["score_label"]]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = -540.0
+offset_right = 22.0
+offset_bottom = -513.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_0sf4t")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1

@@ -51,9 +51,9 @@ position = Vector2(665, -67)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D4" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-315, -66)
+position = Vector2(-383, -66)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D5" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-595, -67)
+position = Vector2(-699, -67)
 script = ExtResource("7_ymlm2")
