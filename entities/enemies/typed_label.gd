@@ -34,15 +34,35 @@ func normalized_string(string: String):
 		string[i] = map_weird_chars.get(string[i], string[i])
 	return string.strip_edges()
 
+func animate_typed(text, typed):
+	var percent = 1.0 * len(typed) / len(text)
+	var new_rotation = 0
+	if len(typed) != 0:
+		new_rotation = deg_to_rad(3) * (-1 if len(typed) % 2 == 1 else 1)
+	var size = Vector2.ONE * (1 + 0.5 * percent)
+	create_tween().tween_property(self, "scale", size, 0.1) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(self, "rotation", new_rotation, 0.1) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		
+func animate_disappear():
+	var tween = create_tween()
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.5) \
+		.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	await tween.finished
+	if is_instance_valid(self):
+		self.modulate = Color.TRANSPARENT
 
 func type_text(typed: String) -> bool:
 	var text = normalized_string($Label.text)
 	typed = normalized_string(typed)
 	if text.begins_with(typed):
+		animate_typed(text, typed)
 		$Typed.visible_characters = len(typed)
 	else:
 		$Typed.visible_characters = 0
 	if text == typed:
+		animate_disappear()
 		emit_signal("correctly_typed", self)
 		return true
 	return false

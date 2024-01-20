@@ -13,7 +13,6 @@ var explosion_scene = preload("res://vfx/explosion/explosion.tscn")
 var seek: Node
 var speed = 200
 var direction = Vector2(0, -1)
-var has_hit = false
 
 func set_as_enemy_rocket():
 	direction = Vector2(0, 1)
@@ -40,9 +39,8 @@ func is_same_or_parent_of(parent, child) -> bool:
 	return is_same_or_parent_of(parent, child.get_parent())
 
 func _on_area_entered(area):
-	if is_same_or_parent_of(area, seek) and not has_hit:
-		area.reduce_hp(damage) # TODO mothership
-		has_hit = true
+	if is_same_or_parent_of(area, seek):
+		area.reduce_hp(damage)
 		var explosion = explosion_scene.instantiate()
 		explosion.set_dir(direction)
 		explosion.position = position

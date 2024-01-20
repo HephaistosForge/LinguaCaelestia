@@ -12,6 +12,7 @@ var index: int
 var hp: int
 var target_position: Vector2
 const rocket_scene = preload("res://entities/projectile/rocket/rocket.tscn")
+const explosion_scene = preload("res://vfx/explosion/ship_explosion.tscn")
 @onready var mothership = get_tree().get_first_node_in_group("mothership")
 var projectile_targets: Array
 
@@ -53,6 +54,9 @@ func _on_typed_label(ignore):
 
 func destroy():
 	emit_signal("destroyed", index)
+	var explosion = explosion_scene.instantiate()
+	explosion.position = position
+	add_sibling(explosion)
 	queue_free()
 
 func _physics_process(delta):
