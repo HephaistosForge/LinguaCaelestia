@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kvgyoarn6ghc"]
+[gd_scene load_steps=8 format=3 uid="uid://kvgyoarn6ghc"]
 
 [ext_resource type="Texture2D" uid="uid://bggybar3yr43c" path="res://resources/background.jpg" id="1_ahj1x"]
 [ext_resource type="PackedScene" uid="uid://baq4lpljix6qm" path="res://entities/mothership/mothership.tscn" id="2_nbpvr"]
@@ -7,7 +7,17 @@
 [ext_resource type="PackedScene" uid="uid://coxunspw3wxa8" path="res://vfx/background/background.tscn" id="5_t8hon"]
 [ext_resource type="FontFile" uid="uid://durggn5l07xfn" path="res://ui/fonts/NovaSquare-Regular.ttf" id="6_0sf4t"]
 
+[sub_resource type="Environment" id="Environment_vph2v"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.0
+glow_strength = 1.65
+glow_hdr_threshold = 0.8
+
 [node name="Main" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vph2v")
 
 [node name="Background" type="Sprite2D" parent="."]
 visible = false
@@ -16,6 +26,7 @@ texture = ExtResource("1_ahj1x")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Mothership" parent="." instance=ExtResource("2_nbpvr")]
+modulate = Color(1.8, 1.8, 1.8, 1)
 position = Vector2(4, 433)
 
 [node name="EnemyTargetPositions" type="Node2D" parent="."]
@@ -49,6 +60,7 @@ z_index = -10
 position = Vector2(-105, -616)
 
 [node name="ScoreLabel" type="Label" parent="." groups=["score_label"]]
+modulate = Color(2, 2, 2, 1)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

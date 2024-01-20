@@ -15,6 +15,7 @@ scale = Vector2(3.5, 3.5)
 script = ExtResource("1_c6qsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(4, 4, 4, 1)
 material = SubResource("ShaderMaterial_ht3lm")
 texture = ExtResource("3_ntueu")
 
