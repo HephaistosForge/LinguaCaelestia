@@ -73,7 +73,7 @@ func play_button_click():
 
 # HELPER
 
-func create_sound_player(sound, position, modify = true, volume_factor=1):
+func create_sound_player(sound, position, modify = true, volume_factor: float =1):
 	var player
 	if position == null:
 		player = AudioStreamPlayer.new()

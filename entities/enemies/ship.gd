@@ -32,7 +32,7 @@ func reduce_hp(by):
 	if hp <= 0:
 		destroy()
 		
-func launch_rockets(size, speed, accel, max_speed, damage):
+func launch_rockets(size, accel, _speed, max_speed, damage):
 	if not is_instance_valid(mothership):
 		return
 		
@@ -46,7 +46,7 @@ func launch_rockets(size, speed, accel, max_speed, damage):
 			rocket.set_as_enemy_rocket()
 			rocket.damage = damage
 			rocket.scale = Vector2(size, size)
-			rocket.speed = 0
+			rocket.speed = _speed
 			rocket.accel = accel
 			rocket.max_speed = max_speed
 			rocket.seek = target
@@ -57,7 +57,7 @@ func launch_rockets(size, speed, accel, max_speed, damage):
 			if is_instance_valid(mothership):
 				mothership.display_impact_warning(target, rocket, language)
 			
-func _on_typed_label(ignore):
+func _on_typed_label(_ignore):
 	emit_signal("enemy_typed_label", self)
 
 func destroy():

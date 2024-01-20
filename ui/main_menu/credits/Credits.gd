@@ -6,7 +6,7 @@ const regular = preload("res://ui/fonts/NovaSquare-Regular.ttf")
 
 
 var music = ["Music", 
-["Paradox by | e s c p | https://escp-music.bandcamp.com", "Music promoted by https://www.free-stock-music.com", "Creative Commons / Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"]
+["Unknown Energy by Dox | https://soundcloud.com/dox-free-music", "Music promoted by https://www.free-stock-music.com", "Creative Commons / Attribution-NoDerivs 3.0 Unported (CC BY-ND 3.0) https://creativecommons.org/licenses/by-nd/3.0/"]
 ]
 
 var shader = ["Shaders",
@@ -20,6 +20,7 @@ var sound = ["Sound Design",
 ]
 
 var art = ["Artists",
+["Jonas Moesicke", null, null],
 ["Lukas Großehagenbrock",null, null],
 ]
 
@@ -34,7 +35,7 @@ var thanks = ["Thanks for Playing!"]
 
 var licensing = ["",
 	[
-		"Deep In Space\n A game by Hephaistos' Forge","2024","MIT License"
+		"Lingua Caelestia\n A game by Hephaistos' Forge","2024","MIT License"
 	]
 ]
 

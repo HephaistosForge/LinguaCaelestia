@@ -93,10 +93,11 @@ bg_color = Color(0.00392157, 0.00392157, 0.168627, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76blc"]
 bg_color = Color(0.00392157, 0.00392157, 0.168627, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+border_width_left = 2
+border_width_top = 2
+border_width_right = 10
+border_width_bottom = 2
+border_color = Color(0.0793812, 0.813588, 1, 1)
 
 [resource]
 Button/colors/font_color = Color(0.819608, 0.968627, 1, 1)

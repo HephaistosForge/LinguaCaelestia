@@ -4,7 +4,6 @@ extends VBoxContainer
 @onready var music_val = $Musik/MusicVal
 @onready var sound_slide = $Sound/CenterContainer/Sound_Slide
 @onready var sound_val = $Sound/SoundVal
-@onready var check_box = $TutorialCheck/CheckBox
 
 
 func _ready() -> void:

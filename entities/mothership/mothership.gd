@@ -2,7 +2,6 @@ extends Area2D
 
 signal player_death
 
-
 var max_hp = 1000
 var hp = 1000
 
@@ -24,8 +23,14 @@ func reduce_hp(val: int) -> void:
 		self.handle_death()
 
 
+func heal(val: int) -> void:
+	self.hp += val
+	self.hp = clamp(self.hp, 0, max_hp)
+
+
 func handle_death() -> void:
 	player_death.emit()
+	
 	self.queue_free()
 
 

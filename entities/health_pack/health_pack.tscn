@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://yfha5mqcxwdw"]
+
+[ext_resource type="Texture2D" uid="uid://cgr0n70vn426y" path="res://resources/health_pack.png" id="1_ud6ck"]
+[ext_resource type="Script" path="res://entities/health_pack/health_pack.gd" id="2_62h1e"]
+[ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_1ao8f"]
+
+[node name="HealthPack" type="Sprite2D"]
+texture = ExtResource("1_ud6ck")
+script = ExtResource("2_62h1e")
+
+[node name="TypedLabel" parent="." instance=ExtResource("3_1ao8f")]
+position = Vector2(0, 40)
+
+[connection signal="correctly_typed" from="TypedLabel" to="." method="_on_typed_label_correctly_typed"]

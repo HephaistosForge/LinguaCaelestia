@@ -1,6 +1,7 @@
 extends Node2D
 
 var rocket_scene = preload("res://entities/projectile/rocket/rocket.tscn")
+const HEALTH_PACK_PREFAB = preload("res://entities/health_pack/health_pack.tscn")
 
 var target_positions: Array[Vector2]
 var target_occupants: Array
@@ -19,9 +20,7 @@ func _ready():
 	_spawn_enemy()
 	$TextEdit.grab_focus()
 	score_label = get_tree().get_first_node_in_group("score_label")
-
-func _process(delta):
-	pass
+	spawn_health_pack()
 
 func _random_choice(arr):
 	return arr[randi() % len(arr)]
@@ -59,6 +58,8 @@ func _on_ship_destroyed(index):
 	print(difficulty, score)
 	if score in increase_difficulty_at_score:
 		difficulty += 1
+	if score % 7 == 0:
+		spawn_health_pack()
 
 func _random_enemy():
 	var lang = _random_choice(Lang.LANGUAGES)
@@ -66,6 +67,14 @@ func _random_enemy():
 	cruiser.language = lang
 	cruiser.set_text(_random_choice(lang.ship_words).strip_edges().to_lower())
 	return cruiser
+
+
+func spawn_health_pack():
+	var x = randi_range((-float(get_viewport_rect().size.x)/2) + 100, (float(get_viewport_rect().size.x/2)) - 100)
+	var health_pack = HEALTH_PACK_PREFAB.instantiate()
+	add_child(health_pack)
+	health_pack.global_position = Vector2(x, -(float(get_viewport_rect().size.y/2)) - 100)
+	
 
 
 func _player_launch_rocket_at(node):
