@@ -14,6 +14,7 @@ var ENGLISH: Language = Language.new(
 	], 
 	["Shield", "defend", "block", "protect", "Guard"],
 	["Rocket","Laser"],
+	Color.AQUAMARINE,
 	preload("res://entities/enemies/latin/cruiser.tscn"),
 )
 
@@ -32,6 +33,7 @@ var LANGUAGES: Array[Language] = [
 		], 
 		["Schild", "verteidigen", "blocken", "schützen", "Wächter"],
 		["Rakete","Laser"],
+		Color.GOLDENROD,
 		preload("res://entities/enemies/german/cruiser.tscn"),
 	),
 	Language.new(
@@ -50,6 +52,7 @@ var LANGUAGES: Array[Language] = [
 		], 
 		["scutum", "defensio", "arcēre", "tueri", "custodia"],
 		["missile","telum"],
+		Color.CRIMSON,
 		preload("res://entities/enemies/latin/cruiser.tscn"),
 	),
 	Language.new(
@@ -67,6 +70,7 @@ var LANGUAGES: Array[Language] = [
 		],
 		["pale pale", "pale aku", "poloka", "e hoomalu", "kiai"],
 		["pana", "ihe"],
+		Color.YELLOW,
 		preload("res://entities/enemies/hawaiian/cruiser.tscn"),
 	),
 	Language.new(
@@ -84,6 +88,7 @@ var LANGUAGES: Array[Language] = [
 		], 
 		["Bouclier", "défendent", "bloquer", "protègent", "Gardien"],
 		["Missile","Laser"],
+		Color.BLUE,
 		preload("res://entities/enemies/french/cruiser.tscn"),
 	),
 ]

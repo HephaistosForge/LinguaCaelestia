@@ -2,16 +2,28 @@ extends Node2D
 
 @onready var icon = $Icon
 @onready var typed_label = $TypedLabel
-# Called when the node enters the scene tree for the first time.
+var tween
+
+
 func _ready() -> void:
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.tween_property(icon, "scale", Vector2(1.3, 1.3), 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(icon, "scale", Vector2(1.0, 1.0), 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-	tween.set_loops()
+	tween.set_loops(999)
 
-func set_input_text(text: String):
+
+func init(color: Color, text: String, weapon: Node2D) -> void:
 	typed_label.set_text(text)
-	
+	icon.modulate = color
+	weapon.destroyed.connect(_on_weapon_destroyed)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_weapon_destroyed(_weapon_ref):
+	if tween.is_running:
+		tween.kill()
+	self.queue_free()
