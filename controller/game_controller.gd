@@ -16,6 +16,7 @@ func _ready():
 func _process(delta):
 	pass
 
+
 func _random_choice(arr):
 	return arr[randi() % len(arr)]
 
@@ -66,6 +67,9 @@ func _player_launch_rocket_at(node):
 
 func _on_text_edit_text_changed():
 	var text = $TextEdit.text
+	if "\n" in text:
+		$TextEdit.text = ""
+		return
 	for typed_label in get_tree().get_nodes_in_group("typed_label"):
 		if typed_label.type_text(text):
 			$TextEdit.text = ""
