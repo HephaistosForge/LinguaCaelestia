@@ -64,10 +64,12 @@ func play_ship_arrive():
 	create_sound_player(ship_arrive.pick_random(), null, false)
 
 func play_button_hover():
-	create_sound_player(button_hover.pick_random(), null, false)
+	if not button_hover.is_empty():
+		create_sound_player(button_hover.pick_random(), null, false)
 	
 func play_button_click():
-	create_sound_player(button_click.pick_random(), null, false)
+	if not button_click.is_empty():
+		create_sound_player(button_click.pick_random(), null, false)
 
 # HELPER
 

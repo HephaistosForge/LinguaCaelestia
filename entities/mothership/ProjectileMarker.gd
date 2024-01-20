@@ -47,9 +47,10 @@ func refresh_warning_positions():
 
 func _on_correctly_typed(correctly_typed):
 	var language = correctly_typed.language
-	impact_warnings[language].dismiss_warning()
-	impact_warnings.erase(language)
-	spawn_shield(language)
+	if is_instance_valid(impact_warnings[language]):
+		impact_warnings[language].dismiss_warning()
+		impact_warnings.erase(language)
+		spawn_shield(language)
 	
 
 
