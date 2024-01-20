@@ -15,6 +15,7 @@ const rocket_scene = preload("res://entities/projectile/rocket/rocket.tscn")
 const explosion_scene = preload("res://vfx/explosion/ship_explosion.tscn")
 @onready var mothership = get_tree().get_first_node_in_group("mothership")
 var projectile_targets: Array
+var target_override = null
 
 signal enemy_typed_label(Area2D)
 
@@ -34,7 +35,11 @@ func reduce_hp(by):
 func launch_rockets(size, speed, accel, max_speed, damage):
 	if not is_instance_valid(mothership):
 		return
+		
 	var target = projectile_targets[randi() % len(projectile_targets)]
+	if target_override != null:
+		target = target_override
+		
 	for child in get_children():
 		if child.is_in_group("enemy_rocket_launch_position"):
 			var rocket = rocket_scene.instantiate()
