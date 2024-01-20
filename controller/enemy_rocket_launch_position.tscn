@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://b7o8rsbm5uc88"]
+
+[node name="EnemyRocketLaunchPosition" type="Node2D" groups=["enemy_rocket_launch_position"]]

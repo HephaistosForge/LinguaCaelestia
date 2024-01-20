@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2hku02w8pf8g"]
+[gd_scene load_steps=6 format=3 uid="uid://d2hku02w8pf8g"]
 
 [ext_resource type="Texture2D" uid="uid://dlr62jd136obn" path="res://entities/enemies/hawaiian/hawaiian_cruiser.png" id="1_od66u"]
 [ext_resource type="Script" path="res://entities/enemies/hawaiian/hawaiian.gd" id="1_v62ki"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_lei02"]
+[ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_ts03s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
 size = Vector2(52, 106)
 
 [node name="Cruiser" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_v62ki")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -21,3 +24,6 @@ shape = SubResource("RectangleShape2D_jqkhx")
 [node name="TypedLabel" parent="." instance=ExtResource("3_lei02")]
 position = Vector2(0, -82)
 color = Color(0.305882, 0.745098, 0, 1)
+
+[node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_ts03s")]
+position = Vector2(-1, 54)

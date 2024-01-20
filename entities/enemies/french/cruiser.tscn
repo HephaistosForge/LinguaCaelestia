@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://e6gbe3x04gd3"]
+[gd_scene load_steps=6 format=3 uid="uid://e6gbe3x04gd3"]
 
 [ext_resource type="Script" path="res://entities/enemies/french/french.gd" id="1_0ocej"]
 [ext_resource type="Texture2D" uid="uid://cpmmpg3s4xp2k" path="res://entities/enemies/french/french_cruiser.png" id="1_j57ca"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="2_376hm"]
+[ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_1oudg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
 size = Vector2(28, 106)
 
-[node name="Cruiser" type="Area2D"]
+[node name="FrenchCruiser" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_0ocej")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -21,3 +24,12 @@ shape = SubResource("RectangleShape2D_jqkhx")
 [node name="TypedLabel" parent="." instance=ExtResource("2_376hm")]
 position = Vector2(0, -82)
 color = Color(1, 0.866667, 0, 1)
+
+[node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_1oudg")]
+position = Vector2(-1, 73)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

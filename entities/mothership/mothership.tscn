@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://gdlg80cykwxt" path="res://controller/laser_launch_position.tscn" id="5_1g3ql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fvu3"]
-size = Vector2(1900, 206)
+size = Vector2(1900, 171)
 
-[node name="Mothership" type="Area2D"]
+[node name="Mothership" type="Area2D" groups=["mothership"]]
+collision_mask = 0
 script = ExtResource("1_it0jo")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -18,6 +19,7 @@ scale = Vector2(7.48438, 0.820312)
 texture = ExtResource("1_0wg1b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_1fvu3")
 
 [node name="RocketLaunchPosition" parent="." instance=ExtResource("2_qkcl2")]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bggybar3yr43c" path="res://resources/background.jpg" id="1_ahj1x"]
 [ext_resource type="PackedScene" uid="uid://baq4lpljix6qm" path="res://entities/mothership/mothership.tscn" id="2_nbpvr"]
-[ext_resource type="PackedScene" uid="uid://q465b7xb2fw0" path="res://controller/enemy_target_position.tscn" id="3_giaah"]
+[ext_resource type="PackedScene" uid="uid://neuxgsxgw5ij" path="res://controller/enemy_target_position.tscn" id="3_giaah"]
 [ext_resource type="PackedScene" uid="uid://by76rqpob6t67" path="res://controller/game_controller.tscn" id="4_k3rsk"]
 
 [node name="Main" type="Node2D"]

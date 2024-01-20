@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://d24o3v76dcv2o"]
+[gd_scene load_steps=6 format=3 uid="uid://d24o3v76dcv2o"]
 
 [ext_resource type="Script" path="res://entities/enemies/german/german.gd" id="1_dbg30"]
 [ext_resource type="Texture2D" uid="uid://cjmsxg2efhpti" path="res://entities/enemies/german/german_cruiser.png" id="1_gk2wh"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="2_x7u84"]
+[ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_ld0su"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7a3te"]
 radius = 44.0
 height = 92.0
 
 [node name="Cruiser" type="Area2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_dbg30")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -23,3 +26,6 @@ shape = SubResource("CapsuleShape2D_7a3te")
 [node name="TypedLabel" parent="." instance=ExtResource("2_x7u84")]
 position = Vector2(0, -82)
 color = Color(0.694118, 0.545098, 0.0196078, 1)
+
+[node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_ld0su")]
+position = Vector2(0, 12)
