@@ -11,7 +11,7 @@ shader = ExtResource("2_blg41")
 radius = 54.0
 
 [node name="Shield" type="Node2D" groups=["shield"]]
-scale = Vector2(3, 3)
+scale = Vector2(3.5, 3.5)
 script = ExtResource("1_c6qsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

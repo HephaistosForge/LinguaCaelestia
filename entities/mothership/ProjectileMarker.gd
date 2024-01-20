@@ -3,7 +3,7 @@ extends Marker2D
 const INCOMING_MISSILE_WARNING_PREFAB = preload("res://player/ui/incoming_missile_warning.tscn")
 const SHIELD_PREFAB = preload("res://entities/mothership/shield.tscn")
 
-const SHIELD_OFFSET = 200
+const SHIELD_OFFSET = 140
 const OFFSET = 90
 
 var impact_warnings = {}

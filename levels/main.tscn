@@ -41,7 +41,7 @@ position = Vector2(488, -129)
 position = Vector2(728, -362)
 
 [node name="GameController" parent="." instance=ExtResource("4_k3rsk")]
-position = Vector2(0, 241)
+position = Vector2(-1, 138)
 
 [node name="Background2" parent="." instance=ExtResource("5_t8hon")]
 z_index = -10

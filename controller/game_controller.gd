@@ -7,7 +7,7 @@ var target_occupants: Array
 var score = 0
 var difficulty = 1
 
-var increase_difficulty_at_score = [2, 5, 10, 20, 30, 50]
+var increase_difficulty_at_score = [2, 9, 20, 40, 60, 100]
 
 func _ready():
 	for node in get_tree().get_nodes_in_group("enemy_target_position"):
@@ -51,9 +51,7 @@ func _spawn_enemy():
 func _on_ship_destroyed(index):
 	target_occupants[index] = null
 	score += 1
-	print(difficulty, score)
 	if score in increase_difficulty_at_score:
-
 		difficulty += 1
 
 func _random_enemy():
@@ -68,9 +66,9 @@ func _player_launch_rocket_at(node):
 	var rocket_launch_pos = get_tree().get_first_node_in_group("rocket_launch_position")
 	if is_instance_valid(rocket_launch_pos):
 		var rocket = rocket_scene.instantiate()
-		rocket.position = rocket_launch_pos.position
 		rocket.seek = node
 		add_child(rocket)
+		rocket.global_position = rocket_launch_pos.global_position
 
 func _on_text_edit_text_changed():
 	var text = $TextEdit.text
