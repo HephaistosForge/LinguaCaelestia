@@ -1,12 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://ut0vy4oytro7"]
+[gd_scene load_steps=8 format=3 uid="uid://ut0vy4oytro7"]
 
 [ext_resource type="Script" path="res://entities/enemies/latin/latin.gd" id="1_001ml"]
 [ext_resource type="Texture2D" uid="uid://dyk7wq48gycyt" path="res://entities/enemies/latin/latin_cruiser.png" id="2_guxcj"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_u6h1s"]
 [ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_pj5ew"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
-size = Vector2(48, 98)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjqr6"]
+radius = 23.0
+height = 90.0
+
+[sub_resource type="Curve" id="Curve_xd84u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.213622, 0.0190184), 0.0, 0.0, 0, 0, Vector2(0.594427, 0.282209), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_ss6ap"]
+offsets = PackedFloat32Array(0.0508475, 0.464407, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.924702, 0, 0.0950825, 1, 1, 1, 0, 1)
 
 [node name="Cruiser" type="Area2D"]
 collision_layer = 2
@@ -19,7 +28,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_guxcj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_jqkhx")
+shape = SubResource("CapsuleShape2D_wjqr6")
 
 [node name="TypedLabel" parent="." instance=ExtResource("3_u6h1s")]
 position = Vector2(0, -88)
@@ -34,5 +43,60 @@ position = Vector2(42, 41)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.429
 autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(-15, -42)
+amount = 50
+speed_scale = 0.8
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+spread = 2.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.44
+initial_velocity_max = 175.44
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_xd84u")
+color_ramp = SubResource("Gradient_ss6ap")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(16, -42)
+amount = 50
+speed_scale = 0.8
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+spread = 2.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.44
+initial_velocity_max = 175.44
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_xd84u")
+color_ramp = SubResource("Gradient_ss6ap")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, -49)
+amount = 150
+speed_scale = 0.8
+randomness = 0.36
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2(0, -1)
+spread = 2.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.44
+initial_velocity_max = 175.44
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_xd84u")
+color_ramp = SubResource("Gradient_ss6ap")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

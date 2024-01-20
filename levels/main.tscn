@@ -28,7 +28,6 @@ texture = ExtResource("1_ahj1x")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Mothership" parent="." instance=ExtResource("2_nbpvr")]
-modulate = Color(1.8, 1.8, 1.8, 1)
 position = Vector2(4, 433)
 
 [node name="EnemyTargetPositions" type="Node2D" parent="."]
@@ -59,7 +58,8 @@ position = Vector2(-1, 138)
 
 [node name="Background2" parent="." instance=ExtResource("5_t8hon")]
 z_index = -10
-position = Vector2(-105, -616)
+position = Vector2(9, 595)
+rotation = -3.14159
 
 [node name="ScoreLabel" type="Label" parent="." groups=["score_label"]]
 modulate = Color(2, 2, 2, 1)
