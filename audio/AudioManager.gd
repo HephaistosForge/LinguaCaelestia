@@ -25,9 +25,19 @@ const ship_arrive = [
 ]
 
 const button_hover = [
+	preload("res://audio/button_hover.wav")
 ]
 
 const button_click = [
+	preload("res://audio/button_click.wav")
+]
+
+const type_writer = [
+	preload("res://audio/type_writer_key_press.wav")
+]
+
+const type_writer_bell = [
+	preload("res://audio/typewriter_bell.wav")
 ]
 
 var music_volume = 3
@@ -65,11 +75,17 @@ func play_ship_arrive():
 
 func play_button_hover():
 	if not button_hover.is_empty():
-		create_sound_player(button_hover.pick_random(), null, false, 0.2)
+		create_sound_player(button_hover.pick_random(), null, false, 0.8)
 	
 func play_button_click():
 	if not button_click.is_empty():
-		create_sound_player(button_click.pick_random(), null, false, 0.2)
+		create_sound_player(button_click.pick_random(), null, false, 1.2)
+		
+func play_key_press():
+	create_sound_player(type_writer.pick_random(), null, true)
+	
+func play_typewriter_bell():
+	create_sound_player(type_writer_bell.pick_random(), null, true, 0.4)
 
 # HELPER
 

@@ -20,7 +20,6 @@ func _ready():
 	_spawn_enemy()
 	$TextEdit.grab_focus()
 	score_label = get_tree().get_first_node_in_group("score_label")
-	spawn_health_pack()
 
 func _random_choice(arr):
 	return arr[randi() % len(arr)]
@@ -85,6 +84,7 @@ func _player_launch_rocket_at(node):
 		rocket.global_position = rocket_launch_pos.global_position
 
 func _on_text_edit_text_changed():
+	AudioManager.play_key_press()
 	var text = $TextEdit.text
 	if "\n" in text:
 		$TextEdit.text = ""
@@ -92,4 +92,5 @@ func _on_text_edit_text_changed():
 	for typed_label in get_tree().get_nodes_in_group("typed_label"):
 		if typed_label.type_text(text):
 			$TextEdit.text = ""
+			AudioManager.play_typewriter_bell()
 			break

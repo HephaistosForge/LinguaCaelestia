@@ -8,7 +8,7 @@ var speed = 30
 func _ready() -> void:
 	mothership = get_tree().get_first_node_in_group("mothership")
 	typed_label.set_text("repair")
-	typed_label.set_color(Color.WEB_GREEN)
+	typed_label.set_color(Color.AQUAMARINE)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -70,7 +70,7 @@ var LANGUAGES: Array[Language] = [
 		],
 		["pale pale", "pale aku", "poloka", "e hoomalu", "kiai"],
 		["pana", "ihe"],
-		Color.YELLOW,
+		Color.LIME_GREEN,
 		preload("res://entities/enemies/hawaiian/cruiser.tscn"),
 	),
 	Language.new(
