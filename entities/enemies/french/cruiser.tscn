@@ -22,7 +22,7 @@ texture = ExtResource("1_j57ca")
 shape = SubResource("RectangleShape2D_jqkhx")
 
 [node name="TypedLabel" parent="." instance=ExtResource("2_376hm")]
-position = Vector2(0, -82)
+position = Vector2(-1, -101)
 color = Color(1, 0.866667, 0, 1)
 
 [node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_1oudg")]

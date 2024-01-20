@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://kvgyoarn6ghc"]
+[gd_scene load_steps=6 format=3 uid="uid://kvgyoarn6ghc"]
 
 [ext_resource type="Texture2D" uid="uid://bggybar3yr43c" path="res://resources/background.jpg" id="1_ahj1x"]
 [ext_resource type="PackedScene" uid="uid://baq4lpljix6qm" path="res://entities/mothership/mothership.tscn" id="2_nbpvr"]
 [ext_resource type="PackedScene" uid="uid://neuxgsxgw5ij" path="res://controller/enemy_target_position.tscn" id="3_giaah"]
 [ext_resource type="PackedScene" uid="uid://by76rqpob6t67" path="res://controller/game_controller.tscn" id="4_k3rsk"]
+[ext_resource type="PackedScene" uid="uid://coxunspw3wxa8" path="res://vfx/background/background.tscn" id="5_t8hon"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("1_ahj1x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -18,25 +20,29 @@ position = Vector2(4, 433)
 [node name="EnemyTargetPositions" type="Node2D" parent="."]
 
 [node name="EnemyTargetPosition" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(-752, -379)
+position = Vector2(-739, -368)
 
 [node name="EnemyTargetPosition2" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(-514, -266)
+position = Vector2(-495, -136)
 
 [node name="EnemyTargetPosition3" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(-370, -425)
+position = Vector2(-292, -357)
 
 [node name="EnemyTargetPosition4" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(-155, -275)
+position = Vector2(2, -143)
 
 [node name="EnemyTargetPosition5" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(126, -396)
+position = Vector2(251, -353)
 
 [node name="EnemyTargetPosition6" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(326, -215)
+position = Vector2(488, -129)
 
 [node name="EnemyTargetPosition7" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(632, -411)
+position = Vector2(728, -362)
 
 [node name="GameController" parent="." instance=ExtResource("4_k3rsk")]
 position = Vector2(0, 241)
+
+[node name="Background2" parent="." instance=ExtResource("5_t8hon")]
+z_index = -10
+position = Vector2(-105, -616)

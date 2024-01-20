@@ -38,10 +38,11 @@ func launch_rockets(size, speed, accel, max_speed, damage):
 			rocket.set_as_enemy_rocket()
 			rocket.damage = damage
 			rocket.scale = Vector2(size, size)
-			rocket.speed = speed
+			rocket.speed = 0
 			rocket.accel = accel
 			rocket.max_speed = max_speed
 			rocket.seek = target
+			rocket.rotation_speed = 0.2
 			add_sibling(rocket)
 			rocket.global_position = child.global_position
 			if is_instance_valid(mothership):

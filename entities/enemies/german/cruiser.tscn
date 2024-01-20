@@ -24,7 +24,7 @@ rotation = -1.5708
 shape = SubResource("CapsuleShape2D_7a3te")
 
 [node name="TypedLabel" parent="." instance=ExtResource("2_x7u84")]
-position = Vector2(0, -82)
+position = Vector2(0, -92)
 color = Color(0.694118, 0.545098, 0.0196078, 1)
 
 [node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_ld0su")]
