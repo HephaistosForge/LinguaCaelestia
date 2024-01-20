@@ -42,6 +42,7 @@ func _spawn_enemy():
 	cruiser.position = target_pos * Vector2(0, 500)
 	cruiser.target_position = target_pos
 	add_child(cruiser)
+	cruiser.connect("enemy_typed_label", _player_launch_rocket_at)
 	
 func _on_ship_destroyed(index):
 	target_occupants[index] = null
@@ -65,7 +66,4 @@ func _on_text_edit_text_changed():
 	for typed_label in get_tree().get_nodes_in_group("typed_label"):
 		if typed_label.type_text(text):
 			$TextEdit.text = ""
-			# TODO: for now destroy immediately
-			#typed_label.get_parent().destroy()
-			_player_launch_rocket_at(typed_label.get_parent())
 			break
