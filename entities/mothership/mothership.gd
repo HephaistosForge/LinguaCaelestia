@@ -7,6 +7,14 @@ var max_hp = 1000
 var hp = 1000
 
 
+func _ready():
+	var initial_pos = position
+	self.position.y += 400
+	create_tween().tween_property(self, "position", initial_pos, 1) \
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	
+
+
 func get_projectile_targets() -> Array[Node]:
 	return $ProjectileTargets.get_children()
 

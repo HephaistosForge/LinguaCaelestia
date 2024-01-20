@@ -32,7 +32,7 @@ position = Vector2(4, 433)
 [node name="EnemyTargetPositions" type="Node2D" parent="."]
 
 [node name="EnemyTargetPosition" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(-739, -368)
+position = Vector2(-665, -368)
 
 [node name="EnemyTargetPosition2" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
 position = Vector2(-495, -136)
@@ -47,10 +47,10 @@ position = Vector2(2, -143)
 position = Vector2(251, -353)
 
 [node name="EnemyTargetPosition6" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(488, -129)
+position = Vector2(445, -145)
 
 [node name="EnemyTargetPosition7" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
-position = Vector2(728, -362)
+position = Vector2(620, -353)
 
 [node name="GameController" parent="." instance=ExtResource("4_k3rsk")]
 position = Vector2(-1, 138)

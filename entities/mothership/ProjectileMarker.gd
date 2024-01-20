@@ -21,15 +21,16 @@ func spawn_shield(language: Language):
 
 
 func add_incoming_missile(weapon: Node2D, language: Language, index: int):
-	if impact_warnings.has(language) and is_instance_valid(impact_warnings):
-		impact_warnings[language].add_weapon(weapon)
+	print_debug(impact_warnings)
+	if impact_warnings.has(language.language) and is_instance_valid(impact_warnings):
+		impact_warnings[language.language].add_weapon(weapon)
 	else:
 		display_impact_warning(weapon, language, index)
 
 
 func display_impact_warning(weapon: Node2D, language: Language, index: int):
 	var warning = INCOMING_MISSILE_WARNING_PREFAB.instantiate()
-	impact_warnings[language] = warning
+	impact_warnings[language.language] = warning
 	add_child(warning)
 	warning.init(language, language.color, language.shield_words[index], weapon, self)
 	refresh_warning_positions()
@@ -47,9 +48,9 @@ func refresh_warning_positions():
 
 func _on_correctly_typed(correctly_typed):
 	var language = correctly_typed.language
-	if is_instance_valid(impact_warnings[language]):
-		impact_warnings[language].dismiss_warning()
-		impact_warnings.erase(language)
+	if is_instance_valid(impact_warnings[language.language]):
+		impact_warnings[language.language].dismiss_warning()
+		impact_warnings.erase(language.language)
 		spawn_shield(language)
 	
 
