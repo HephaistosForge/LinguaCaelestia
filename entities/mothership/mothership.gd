@@ -1,5 +1,6 @@
 extends Area2D
 
+var max_hp = 1000
 var hp = 1000
 signal death
 
@@ -8,7 +9,7 @@ func get_projectile_targets() -> Array[Node]:
 
 
 func display_impact_warning(projectile_target: Node2D) -> void:
-	if not typeof(projectile_target) is Marker2D:
+	if not projectile_target is Marker2D:
 		return
 	projectile_target.display_impact_warning()
 
@@ -25,4 +26,5 @@ func handle_death() -> void:
 	self.queue_free()
 
 
-func spawn_shield(position_index)
+func spawn_shield(position_index):
+	pass
