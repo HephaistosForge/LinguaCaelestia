@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-@onready var texture = $TextureRect
+@onready var texture = $PanelContainer/TextureRect
 @onready var title = $Label
 @onready var description = $RichTextLabel
 

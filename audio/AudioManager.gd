@@ -30,8 +30,8 @@ const button_hover = [
 const button_click = [
 ]
 
-var music_volume = 1
-var sound_volume = 1
+var music_volume = 3
+var sound_volume = 3
 
 @onready var background_player = $BackgroundMusic
 

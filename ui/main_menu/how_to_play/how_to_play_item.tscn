@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dswwrb6jo8wxc"]
+[gd_scene load_steps=4 format=3 uid="uid://dswwrb6jo8wxc"]
 
 [ext_resource type="Script" path="res://ui/main_menu/how_to_play/how_to_play_item.gd" id="1_6mblk"]
+[ext_resource type="Texture2D" uid="uid://cqa0x5l7nbktb" path="res://ui/main_menu/how_to_play/screenshots/activate.png" id="2_dwq8b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6p5cb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0793812, 0.813588, 1, 1)
 
 [node name="HowToPlayItem" type="VBoxContainer"]
 anchors_preset = 15
@@ -10,13 +20,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6mblk")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6p5cb")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+texture = ExtResource("2_dwq8b")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+text = "Text"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "text"
 fit_content = true
