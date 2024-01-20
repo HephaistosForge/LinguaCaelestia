@@ -19,6 +19,5 @@ func type_text(typed: String) -> bool:
 	else:
 		$Typed.visible_characters = 0
 	if $Label.text == typed:
-		print_debug("hello")
 		emit_signal("correctly_typed", self)
 	return $Label.text == typed

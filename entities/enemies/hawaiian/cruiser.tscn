@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkhx"]
 size = Vector2(52, 106)
 
-[node name="Cruiser" type="Area2D"]
+[node name="HawaiianCruiser" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_v62ki")
@@ -27,3 +27,8 @@ color = Color(0.305882, 0.745098, 0, 1)
 
 [node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_ts03s")]
 position = Vector2(-1, 54)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

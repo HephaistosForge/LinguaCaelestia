@@ -39,7 +39,7 @@ func _spawn_enemy():
 	var cruiser = _random_enemy()
 	target_occupants[empty_index] = cruiser
 	cruiser.index = empty_index
-	cruiser.position = target_pos * Vector2(0, 500)
+	cruiser.position = target_pos * Vector2(0, 300)
 	cruiser.target_position = target_pos
 	add_child(cruiser)
 	cruiser.connect("enemy_typed_label", _player_launch_rocket_at)

@@ -13,13 +13,15 @@ var hp: int
 var target_position: Vector2
 const rocket_scene = preload("res://entities/projectile/rocket/rocket.tscn")
 @onready var mothership = get_tree().get_first_node_in_group("mothership")
-@onready var projectile_targets = mothership.get_projectile_targets()
+var projectile_targets: Array
 
 signal enemy_typed_label(Area2D)
 
 func _ready():
 	hp = max_hp
 	$TypedLabel.connect("correctly_typed", _on_typed_label)
+	if is_instance_valid(mothership):
+		projectile_targets = mothership.get_projectile_targets()
 	
 func reduce_hp(by):
 	hp -= by
@@ -27,16 +29,21 @@ func reduce_hp(by):
 		destroy()
 		
 func launch_rockets(size, speed, accel, max_speed, damage):
+	if not is_instance_valid(mothership):
+		return
 	var target = projectile_targets[randi() % len(projectile_targets)]
 	for child in get_children():
 		if child.is_in_group("enemy_rocket_launch_position"):
 			var rocket = rocket_scene.instantiate()
-			rocket.global_position = child.global_position
 			rocket.set_as_enemy_rocket()
+			rocket.damage = damage
 			rocket.scale = Vector2(size, size)
+			rocket.speed = speed
+			rocket.accel = accel
 			rocket.max_speed = max_speed
 			rocket.seek = target
 			add_sibling(rocket)
+			rocket.global_position = child.global_position
 			if is_instance_valid(mothership):
 				mothership.display_impact_warning(target, rocket, language)
 			

@@ -9,7 +9,7 @@
 radius = 44.0
 height = 92.0
 
-[node name="Cruiser" type="Area2D"]
+[node name="GermanCruiser" type="Area2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dbg30")
@@ -29,3 +29,9 @@ color = Color(0.694118, 0.545098, 0.0196078, 1)
 
 [node name="EnemyRocketLaunchPosition" parent="." instance=ExtResource("4_ld0su")]
 position = Vector2(0, 12)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.286
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,7 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ca8h6qp87k5ae"]
 
-[ext_resource type="FontFile" uid="uid://cmvj68hwvmkoa" path="res://ui/fonts/BirchLeaf.ttf" id="1_fq8b7"]
+[ext_resource type="FontFile" uid="uid://durggn5l07xfn" path="res://ui/fonts/NovaSquare-Regular.ttf" id="1_i6fdv"]
 
 [resource]
-font = ExtResource("1_fq8b7")
+font = ExtResource("1_i6fdv")
 font_size = 50
