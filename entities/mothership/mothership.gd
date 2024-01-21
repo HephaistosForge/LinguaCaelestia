@@ -6,6 +6,8 @@ var max_hp = 1000
 var hp = 1000
 
 @onready var health_progress_bar = $HealthProgressBar
+@onready var health_effect = $HealthEffect
+
 var base_color = Color.AQUAMARINE
 
 func _ready():
@@ -28,25 +30,37 @@ func display_impact_warning(projectile_target: Node2D, weapon: Node2D, language:
 
 
 func reduce_hp(val: int) -> void:
-	self.hp -= val
-	self.hp = clamp(self.hp, 0, max_hp)
-	update_hp_visually()
+	var new_hp = clamp(self.hp - val, 0, max_hp)
+	var changed_by = new_hp - self.hp
+	self.hp = new_hp
+	update_hp_visually(changed_by)
+
 	if self.hp == 0:
 		self.handle_death()
 
 
 func heal(val: int) -> void:
-	self.hp += val
-	self.hp = clamp(self.hp, 0, max_hp)
-	update_hp_visually()
+	reduce_hp(-val)
 
 
-func update_hp_visually():
+func update_hp_visually(hp_changed_by=0):
 	#var darkened_factor = 1 - (float(hp)/float(max_hp))
 	#health_sprite.modulate = base_color.darkened(0.8 * darkened_factor)
-	var tween = create_tween()
-	tween.tween_property(health_progress_bar, "value", hp, .5) \
+	create_tween().tween_property(health_progress_bar, "value", hp, .5) \
 		.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+		
+	var effect = health_effect.duplicate()
+	var tween = create_tween()
+	effect.modulate = Color.GREEN if hp_changed_by > 0 else Color.RED
+	effect.self_modulate = Color(1, 1, 1, 0.3)
+	add_child(effect)
+	effect.position = health_effect.position
+	var factor = 1 + log(abs(hp_changed_by)) / log(10) / 2
+	tween.tween_property(effect, "scale", effect.scale * factor, .1) \
+		.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(effect, "self_modulate", Color.TRANSPARENT, .1) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
 	# health_progress_bar.value = hp
 
 func handle_death() -> void:

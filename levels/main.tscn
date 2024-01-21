@@ -28,7 +28,7 @@ texture = ExtResource("1_ahj1x")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Mothership" parent="." instance=ExtResource("2_nbpvr")]
-position = Vector2(4, 433)
+position = Vector2(4, 436)
 
 [node name="EnemyTargetPositions" type="Node2D" parent="."]
 

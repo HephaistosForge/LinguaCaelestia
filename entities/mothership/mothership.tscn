@@ -49,26 +49,18 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 max_value = 1000.0
-value = 1000.0
+value = 750.0
 fill_mode = 8
 nine_patch_stretch = true
 texture_under = ExtResource("7_1ck7x")
 texture_progress = ExtResource("7_1ck7x")
-tint_under = Color(0.152941, 0.152941, 0.152941, 1)
+tint_under = Color(0.509804, 0.537255, 0.607843, 1)
 tint_progress = Color(1, 1.5, 1.8, 1)
 radial_initial_angle = 180.0
 
-[node name="HealthSpriteModulate" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 1.5, 2, 1)
-z_index = 5
-position = Vector2(0, 10)
-scale = Vector2(2.09877, 2.09877)
-texture = ExtResource("7_1ck7x")
-
-[node name="HealthSpriteBackground" type="Sprite2D" parent="."]
-modulate = Color(0.172549, 0.290196, 0.309804, 1)
-z_index = 2
+[node name="HealthEffect" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 10
 position = Vector2(0, 10)
 scale = Vector2(2.09877, 2.09877)
 texture = ExtResource("7_1ck7x")
