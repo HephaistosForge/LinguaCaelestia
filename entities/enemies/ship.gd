@@ -89,7 +89,10 @@ func destroy():
 	var explosion = explosion_scene.instantiate()
 	explosion.position = position
 	add_sibling(explosion)
-	queue_free()
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(0.3, 0.3, 0.3, 0.8), 0.15)
+	tween.tween_property(self, "modulate", Color(0.0, 0.0, 0.0, 0.0), 0.35)
+	tween.tween_callback(queue_free)
 
 func _physics_process(delta):
 	self.global_position -= (self.global_position - target_position) * delta * speed

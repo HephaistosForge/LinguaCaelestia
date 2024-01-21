@@ -22,6 +22,7 @@ var seek: Node
 var speed = 0
 var launch_speed = 0
 var direction: Vector2
+var allow_rotating = false
 
 @onready var tween = create_tween()
 
@@ -39,7 +40,9 @@ func _ready():
 	$Particles.emitting = false
 	tween.tween_property(self, "scale", target_scale, 0.2)
 	tween.tween_property(self, "launch_speed", 0, initial_launch_speed_decay_seconds)
-	await get_tree().create_timer(initial_launch_speed_decay_seconds).timeout
+	await get_tree().create_timer(initial_launch_speed_decay_seconds/2.).timeout
+	allow_rotating = true
+	await get_tree().create_timer(initial_launch_speed_decay_seconds/2.).timeout
 	$Particles.emitting = true
 	if accel > 0:
 		var speed_target_time = (max_speed - speed) / accel
@@ -58,10 +61,11 @@ func _physics_process(delta):
 	# speed = min(max_speed, speed+accel*delta)
 	global_position += direction * speed * delta
 	global_position += initial_direction * launch_speed * delta
-	var target_dir = global_position.direction_to(seek.global_position)
-	var new_direction = (direction + target_dir * delta * rotation_speed).normalized()
-	rotate(direction.angle_to(new_direction))
-	direction = new_direction
+	if allow_rotating:
+		var target_dir = global_position.direction_to(seek.global_position)
+		var new_direction = (direction + target_dir * delta * rotation_speed).normalized()
+		rotate(direction.angle_to(new_direction))
+		direction = new_direction
 
 func is_same_or_parent_of(parent, child) -> bool:
 	if child == null:

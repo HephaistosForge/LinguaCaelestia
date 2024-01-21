@@ -20,6 +20,10 @@ var map_weird_chars = {
 	"ü": "u",
 }
 
+func set_horizontal_alignment(alignment):
+	$Label.horizontal_alignment = alignment
+	$Typed.horizontal_alignment = alignment
+
 func _ready():
 	$Typed.visible_characters = 0
 	$Typed.modulate = color

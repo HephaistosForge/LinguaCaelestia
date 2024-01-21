@@ -82,6 +82,11 @@ func _player_launch_rocket_at(node):
 	if is_instance_valid(rocket_launch_pos):
 		var rocket = rocket_scene.instantiate()
 		rocket.seek = node
+		rocket.initial_launch_speed = 250
+		rocket.accel = 300
+		rocket.initial_speed = 50
+		rocket.initial_launch_speed_decay_seconds = 1
+		rocket.rotation_speed = 1.7
 		add_child(rocket)
 		rocket.global_position = rocket_launch_pos.global_position
 		

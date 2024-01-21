@@ -3,8 +3,9 @@ extends Marker2D
 const INCOMING_MISSILE_WARNING_PREFAB = preload("res://player/ui/incoming_missile_warning.tscn")
 const SHIELD_PREFAB = preload("res://entities/mothership/shield.tscn")
 
-const SHIELD_OFFSET = 140
-const OFFSET = 90
+const SHIELD_OFFSET = 130
+const OFFSET = 60
+const INITIAL_OFFSET = 30
 
 var impact_warnings = {}
 var shield: Node2D
@@ -37,12 +38,19 @@ func display_impact_warning(weapon: Node2D, language: Language, index: int):
 
 
 func refresh_warning_positions():
+	var to_be_erased = []
+	for key in impact_warnings:
+		if not is_instance_valid(impact_warnings[key]):
+			to_be_erased.append(key)
+	for key in to_be_erased:
+		impact_warnings.erase(key)
 	for index in len(impact_warnings.keys()):
 		if not is_instance_valid(impact_warnings.values()[index]):
 			continue
-		impact_warnings.values()[index].global_position = self.global_position
-		
-		impact_warnings.values()[index].position.y -= (index + 1) * OFFSET
+		var tween = create_tween()
+		var new_position = self.global_position - Vector2(0, (index + 1) * OFFSET + INITIAL_OFFSET)
+		tween.tween_property(impact_warnings.values()[index], "global_position", new_position, .7) \
+			.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 
 
 func _on_correctly_typed(correctly_typed):
@@ -50,6 +58,7 @@ func _on_correctly_typed(correctly_typed):
 	if is_instance_valid(impact_warnings[language.language]):
 		impact_warnings[language.language].dismiss_warning()
 		impact_warnings.erase(language.language)
+		refresh_warning_positions()
 		spawn_shield(language)
 	
 
@@ -57,6 +66,6 @@ func _on_correctly_typed(correctly_typed):
 func _on_impact_warning_dismissed(warning):
 	if not is_instance_valid(self):
 		return
-	impact_warnings.erase(warning)
+	impact_warnings.erase(warning.language.language)
 	refresh_warning_positions()
 
