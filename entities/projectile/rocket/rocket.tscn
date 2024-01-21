@@ -19,7 +19,7 @@ collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_cnoo4")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Particles" type="CPUParticles2D" parent="."]
 modulate = Color(20, 20, 20, 1)
 position = Vector2(0, 13)
 amount = 50

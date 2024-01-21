@@ -15,6 +15,7 @@ func _ready():
 	self.position.y += 400
 	create_tween().tween_property(self, "position", initial_pos, 1) \
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	health_progress_bar.max_value = max_hp
 	update_hp_visually()
 	
 
@@ -48,7 +49,9 @@ func update_hp_visually(hp_changed_by=0):
 	#health_sprite.modulate = base_color.darkened(0.8 * darkened_factor)
 	create_tween().tween_property(health_progress_bar, "value", hp, .5) \
 		.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-		
+	_add_hp_effect(hp_changed_by)
+	
+func _add_hp_effect(hp_changed_by):
 	var effect = health_effect.duplicate()
 	var tween = create_tween()
 	effect.modulate = Color.GREEN if hp_changed_by > 0 else Color.RED
@@ -59,9 +62,8 @@ func update_hp_visually(hp_changed_by=0):
 	tween.tween_property(effect, "scale", effect.scale * factor, .1) \
 		.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tween.tween_property(effect, "self_modulate", Color.TRANSPARENT, .1) \
-		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-	# health_progress_bar.value = hp
+		.set_trans(Tween.TRANS_LINEAR)
+	tween.finished.connect(func(): effect.queue_free())
 
 func handle_death() -> void:
 	player_death.emit()

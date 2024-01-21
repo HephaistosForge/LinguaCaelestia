@@ -18,9 +18,20 @@ var projectile_targets: Array
 var target_override = null
 @export var breathing_time = 2.0
 
+@export var rocket_size: float = 1
+@export var rocket_accel: float = 25
+@export var rocket_initial_speed: float = 0
+@export var rocket_launch_speed: float = 0
+@export var rocket_launch_speed_decay_seconds: float = 1
+@export var rocket_max_speed: float = 50
+@export var rocket_rotation_speed: float = 1
+@export var rocket_damage: float = 50
+
+
 signal enemy_typed_label(Area2D)
 
 func _ready():
+	configure_rocket_parameters()
 	hp = max_hp
 	$TypedLabel.connect("correctly_typed", _on_typed_label)
 	if is_instance_valid(mothership):
@@ -33,14 +44,17 @@ func _ready():
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "scale", Vector2.ONE, breathing_time) \
 		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	tween.set_loops(999)
+	tween.set_loops(9999)
+	
+func configure_rocket_parameters():
+	pass
 	
 func reduce_hp(by):
 	hp -= by
 	if hp <= 0:
 		destroy()
 		
-func launch_rockets(size, accel, _speed, max_speed, damage):
+func launch_rockets():
 	if not is_instance_valid(mothership):
 		return
 		
@@ -52,13 +66,15 @@ func launch_rockets(size, accel, _speed, max_speed, damage):
 		if child.is_in_group("enemy_rocket_launch_position"):
 			var rocket = rocket_scene.instantiate()
 			rocket.set_as_enemy_rocket()
-			rocket.damage = damage
-			rocket.scale = Vector2(size, size)
-			rocket.speed = _speed
-			rocket.accel = accel
-			rocket.max_speed = max_speed
+			rocket.damage = rocket_damage
+			rocket.scale = Vector2.ONE * rocket_size
+			rocket.initial_launch_speed = rocket_launch_speed
+			rocket.initial_speed = rocket_initial_speed
+			rocket.accel = rocket_accel
+			rocket.max_speed = rocket_max_speed
+			rocket.rotation_speed = rocket_rotation_speed
+			
 			rocket.seek = target
-			rocket.rotation_speed = 1
 			rocket.language = language
 			add_sibling(rocket)
 			rocket.global_position = child.global_position

@@ -21,9 +21,6 @@ func _ready():
 	$TextEdit.grab_focus()
 	score_label = get_tree().get_first_node_in_group("score_label")
 
-func _random_choice(arr):
-	return arr[randi() % len(arr)]
-
 func _on_enemy_spawn_timer():
 	_spawn_enemy()
 
@@ -34,14 +31,14 @@ func _get_free_index():
 			empty.append(i)
 	if len(target_positions) - len(empty) >= difficulty:
 		return null
-	return _random_choice(empty)
+	return empty.pick_random()
 
-func _spawn_enemy():
+func _spawn_enemy(from_language=null):
 	var empty_index = _get_free_index()
 	if empty_index == null:
 		return
 	var target_pos = target_positions[empty_index]
-	var cruiser = _random_enemy()
+	var cruiser = _random_enemy(from_language)
 	target_occupants[empty_index] = cruiser
 	cruiser.index = empty_index
 	cruiser.position = target_pos * Vector2(0, 300)
@@ -61,11 +58,12 @@ func _on_ship_destroyed(index):
 	if score % 7 == 0:
 		spawn_health_pack()
 
-func _random_enemy():
-	var lang = _random_choice(Lang.LANGUAGES)
+func _random_enemy(lang=null):
+	if lang == null:
+		lang = Lang.LANGUAGES.pick_random()
 	var cruiser = lang.cruiser_scene.instantiate()
 	cruiser.language = lang
-	cruiser.set_text(_random_choice(lang.ship_words).strip_edges().to_lower())
+	cruiser.set_text(lang.ship_words.pick_random().strip_edges().to_lower())
 	return cruiser
 
 
@@ -84,6 +82,8 @@ func _player_launch_rocket_at(node):
 		rocket.seek = node
 		add_child(rocket)
 		rocket.global_position = rocket_launch_pos.global_position
+		
+
 
 func _on_text_edit_text_changed():
 	AudioManager.play_key_press()
@@ -96,3 +96,41 @@ func _on_text_edit_text_changed():
 			$TextEdit.text = ""
 			AudioManager.play_typewriter_bell()
 			break
+	if _handle_if_cheat($TextEdit.text):
+		$TextEdit.text = ""
+		
+		
+func _handle_if_cheat(text) -> bool:
+	match text:
+		"#heal":
+			get_tree().get_first_node_in_group("mothership").heal(100)
+			return true
+		"#damage":
+			get_tree().get_first_node_in_group("mothership").reduce_hp(100)
+			return true
+		"#spawn":
+			_spawn_enemy()
+			return true
+		"#difficulty":
+			difficulty += 1
+			return true
+		"#hard":
+			difficulty += 10
+			return true
+		"#invincible":
+			var mothership = get_tree().get_first_node_in_group("mothership")
+			mothership.max_hp = 10000000
+			mothership.hp = 10000000
+			return true
+		"#pack":
+			spawn_health_pack()
+			return true
+		"#nations":
+			for lang in Lang.LANGUAGES:
+				_spawn_enemy(lang)
+			return true
+	for lang in Lang.LANGUAGES:
+		if text == "#" + lang.language:
+			_spawn_enemy(lang)
+			return true
+	return false
