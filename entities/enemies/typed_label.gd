@@ -23,6 +23,14 @@ var map_weird_chars = {
 func set_horizontal_alignment(alignment):
 	$Label.horizontal_alignment = alignment
 	$Typed.horizontal_alignment = alignment
+	var anchor = Control.PRESET_CENTER
+	match alignment:
+		HORIZONTAL_ALIGNMENT_LEFT:
+			anchor = Control.PRESET_CENTER_RIGHT
+		HORIZONTAL_ALIGNMENT_RIGHT:
+			anchor = Control.PRESET_CENTER_LEFT
+	$Typed.anchors_preset = anchor
+	$Label.anchors_preset = anchor
 
 func _ready():
 	$Typed.visible_characters = 0

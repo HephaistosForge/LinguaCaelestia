@@ -5,7 +5,7 @@ const SHIELD_PREFAB = preload("res://entities/mothership/shield.tscn")
 
 const SHIELD_OFFSET = 130
 const OFFSET = 60
-const INITIAL_OFFSET = 30
+const INITIAL_OFFSET = 15
 
 var impact_warnings = {}
 var shield: Node2D

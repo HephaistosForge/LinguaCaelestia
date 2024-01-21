@@ -10,7 +10,7 @@ signal on_dismiss
 
 
 func _ready() -> void:
-	typed_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_LEFT)
+	_configure_typed_label_side()
 	var initial_scale = icon.scale
 	var bounce_scale = initial_scale + Vector2.ONE * 0.2
 	icon.scale = Vector2.ZERO
@@ -26,6 +26,12 @@ func _ready() -> void:
 		.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tween.set_loops(999)
 
+func _configure_typed_label_side():
+	$TypedLabel.position = Vector2(40 * sign(global_position.x), 0)
+	if global_position.x > 0:
+		typed_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_RIGHT)
+	else:
+		typed_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_LEFT)
 
 func init(language: Language, color: Color, text: String, weapon: Node2D, parent: Node2D) -> void:
 	typed_label.set_text(text)

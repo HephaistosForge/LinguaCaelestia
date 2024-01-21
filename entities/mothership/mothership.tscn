@@ -68,19 +68,19 @@ texture = ExtResource("7_1ck7x")
 [node name="ProjectileTargets" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(277, -110)
+position = Vector2(253, -120)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D3" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(643, -61)
+position = Vector2(647, -70)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D4" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-280, -110)
+position = Vector2(-251, -119)
 script = ExtResource("7_ymlm2")
 
 [node name="Marker2D5" type="Marker2D" parent="ProjectileTargets"]
-position = Vector2(-648, -69)
+position = Vector2(-647, -69)
 script = ExtResource("7_ymlm2")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

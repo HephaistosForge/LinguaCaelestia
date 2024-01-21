@@ -11,11 +11,12 @@ shader = ExtResource("2_blg41")
 radius = 54.0
 
 [node name="Shield" type="Node2D" groups=["shield"]]
+modulate = Color(2, 2, 2, 1)
+self_modulate = Color(2, 2, 2, 1)
 scale = Vector2(3.5, 3.5)
 script = ExtResource("1_c6qsf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(4, 4, 4, 1)
 material = SubResource("ShaderMaterial_ht3lm")
 texture = ExtResource("3_ntueu")
 
