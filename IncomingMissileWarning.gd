@@ -49,13 +49,13 @@ func add_weapon(weapon):
 
 
 func dismiss_warning():
-	on_dismiss.emit(self)
 	if tween.is_running:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(icon, "scale", Vector2.ZERO, 0.4) \
+	tween.tween_property(icon, "scale", Vector2.ZERO, 0.5) \
 		.set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	await tween.finished
+	on_dismiss.emit(self)
 	self.queue_free()
 
 
