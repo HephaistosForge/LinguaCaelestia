@@ -9,12 +9,12 @@
 size = Vector2(10, 126)
 
 [sub_resource type="Curve" id="Curve_y8s2f"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.514056, 0), 0.0, 0.0, 0, 0, Vector2(0.803213, 0.331366), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_pcchd"]
-offsets = PackedFloat32Array(0.0135593, 0.40339, 0.847458)
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0, 0.440473, 0.910786, 1)
+offsets = PackedFloat32Array(0, 0.0904977, 0.506787, 1)
+colors = PackedColorArray(2, 2, 2, 1, 0.478, 0.898, 5, 1, 1, 1, 1, 1, 0, 0.132812, 1, 1)
 
 [node name="FrenchCruiser" type="Area2D"]
 collision_layer = 2
@@ -44,20 +44,23 @@ autostart = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 z_index = -1
-position = Vector2(-1, -75)
-amount = 50
+position = Vector2(0, -75)
+amount = 100
+lifetime = 0.5
 randomness = 0.36
 lifetime_randomness = 0.3
 emission_shape = 1
-emission_sphere_radius = 3.0
+emission_sphere_radius = 1.0
 direction = Vector2(0, -1)
 spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 210.52
 initial_velocity_max = 333.33
 scale_amount_min = 3.0
-scale_amount_max = 3.0
+scale_amount_max = 7.0
 scale_amount_curve = SubResource("Curve_y8s2f")
 color_ramp = SubResource("Gradient_pcchd")
+hue_variation_min = -0.27
+hue_variation_max = 0.06
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

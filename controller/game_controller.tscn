@@ -34,9 +34,11 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 virtual_keyboard_enabled = false
 middle_mouse_paste_enabled = false
-caret_type = 1
+caret_blink = true
 caret_move_on_right_click = false
 caret_multiple = false
+draw_tabs = true
+draw_spaces = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer"]
 [connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]

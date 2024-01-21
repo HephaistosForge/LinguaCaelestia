@@ -26,10 +26,14 @@ var direction: Vector2
 @onready var tween = create_tween()
 
 func _ready():
-	direction = initial_direction
 	AudioManager.play_missile_launch()
+	
+	direction = initial_direction
 	speed = initial_speed
 	launch_speed = initial_launch_speed
+	
+	$Warhead.modulate = language.color
+	
 	var target_scale = self.scale
 	self.scale = Vector2.ZERO
 	$Particles.emitting = false
@@ -70,8 +74,18 @@ func destroy():
 	var explosion = explosion_scene.instantiate()
 	explosion.set_dir(direction)
 	explosion.position = position
+	# explosion.scale = scale
 	add_sibling(explosion)
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	destroyed.emit(self)
+	$Particles.emitting = false
+	var tween2 = create_tween()
+	tween2.tween_property(self, "scale", Vector2.ZERO, 0.15) \
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await tween2.finished
+	# Wait until particles have despawned, as this looks cleaner
+	await $Particles.finished
 	queue_free()
 		
 func _on_area_entered(area):
@@ -80,7 +94,7 @@ func _on_area_entered(area):
 			AudioManager.play_shield_hit()
 			destroy()
 			return
-	if is_same_or_parent_of(area, seek):
+	elif is_same_or_parent_of(area, seek):
 		area.reduce_hp(damage)
 		AudioManager.play_missile_hit()
 		destroy()

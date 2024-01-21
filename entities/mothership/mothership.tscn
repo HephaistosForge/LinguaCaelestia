@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6t8r5pw5wfjc" path="res://controller/rocket_launch_position.tscn" id="2_qkcl2"]
 [ext_resource type="Texture2D" uid="uid://dxk5drkxr5tbt" path="res://entities/mothership/laser.png" id="3_ca78k"]
 [ext_resource type="Texture2D" uid="uid://d0rtf686wl5ai" path="res://entities/mothership/shield_generator.png" id="4_6d8p0"]
-[ext_resource type="Texture2D" path="res://entities/mothership/shield_generator_mask.png" id="7_1ck7x"]
+[ext_resource type="Texture2D" uid="uid://ccbq8fm4sr5ck" path="res://entities/mothership/shield_generator_mask.png" id="7_1ck7x"]
 [ext_resource type="Script" path="res://entities/mothership/ProjectileMarker.gd" id="7_ymlm2"]
 [ext_resource type="Texture2D" uid="uid://joiapcyskl4o" path="res://resources/mothership_old.png" id="8_exvfu"]
 

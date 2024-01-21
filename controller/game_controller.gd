@@ -25,13 +25,15 @@ func _on_enemy_spawn_timer():
 	_spawn_enemy()
 
 func _get_free_index():
-	var empty = []
+	var unoccupied = []
 	for i in range(0, len(target_positions)):
 		if target_occupants[i] == null:
-			empty.append(i)
-	if len(target_positions) - len(empty) >= difficulty:
+			unoccupied.append(i)
+	if len(target_positions) - len(unoccupied) >= difficulty:
 		return null
-	return empty.pick_random()
+	if unoccupied.is_empty():
+		return null
+	return unoccupied.pick_random()
 
 func _spawn_enemy(from_language=null):
 	var empty_index = _get_free_index()
@@ -101,12 +103,13 @@ func _on_text_edit_text_changed():
 		
 		
 func _handle_if_cheat(text) -> bool:
+	var mothership = get_tree().get_first_node_in_group("mothership")
 	match text:
 		"#heal":
-			get_tree().get_first_node_in_group("mothership").heal(100)
+			mothership.heal(100)
 			return true
 		"#damage":
-			get_tree().get_first_node_in_group("mothership").reduce_hp(100)
+			mothership.reduce_hp(100)
 			return true
 		"#spawn":
 			_spawn_enemy()
@@ -118,7 +121,6 @@ func _handle_if_cheat(text) -> bool:
 			difficulty += 10
 			return true
 		"#invincible":
-			var mothership = get_tree().get_first_node_in_group("mothership")
 			mothership.max_hp = 10000000
 			mothership.hp = 10000000
 			return true
@@ -128,6 +130,12 @@ func _handle_if_cheat(text) -> bool:
 		"#nations":
 			for lang in Lang.LANGUAGES:
 				_spawn_enemy(lang)
+			return true
+		"#chaos":
+			_handle_if_cheat("#hard")
+			_handle_if_cheat("#nations")
+			_handle_if_cheat("#nations")
+			_handle_if_cheat("#invincible")
 			return true
 	for lang in Lang.LANGUAGES:
 		if text == "#" + lang.language:

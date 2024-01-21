@@ -5,10 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_hrf2p"]
 
 [node name="IncomingMissileWarning" type="Node2D"]
+z_index = 1
 script = ExtResource("1_rh8oj")
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_tj4nd")
 
 [node name="TypedLabel" parent="." instance=ExtResource("3_hrf2p")]
+z_index = 1
 position = Vector2(125, 0)

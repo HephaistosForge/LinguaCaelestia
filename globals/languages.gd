@@ -58,15 +58,15 @@ var LANGUAGES: Array[Language] = [
 	Language.new(
 		"hawaiian", 
 		[
-			"Berena iʻa","kulanui","kau kau","Na la hoʻomaha","Hoao","Loiloi","haumana kulanui","kumu",
-			"hale haʻiʻōlelo","Ka noiʻi","Kauhale Kulanui","Hale Puke","Nupepa","Ako","Hale","ʻOlelo",
-			"Noʻonoʻo kuʻuna","kamepiula","Pepa","Peni","puke wehewehe ʻolelo","manaʻo makemakika",
-			"Helu","piʻapa","haiolelo","Kukakuka","Hale ʻaina","Kaleka ID haumana","Papa manawa",
-			"Aha Haumana","haku thesis","Na koina a'o","Kanawai","Palapala hoʻike","Kakoʻo haʻawina",
-			"Huakaʻi hele","Hale kuʻai haumana","Hoʻolauleʻa","Paʻina pa kula","Hoʻaʻo ʻia",
-			"hooikaika kino","Palekana","ʻenekinia ʻenekinia","Makemakika","Ka pau ana o ka hana",
-			"ʻepekema kamepiula","ʻole","ʻekahi","ʻelua","ʻekolu","eha","ʻelima","ʻeono","ʻehiku",
-			"ʻewalu","ʻeiwa","ʻumi"
+			"Berena i'a","kulanui","kau kau","Na la ho'omaha","Hoao","Loiloi","haumana kulanui","kumu",
+			"hale ha'i'ōlelo","Ka noi'i","Kauhale Kulanui","Hale Puke","Nupepa","Ako","Hale","'Olelo",
+			"No'ono'o ku'una","kamepiula","Pepa","Peni","puke wehewehe 'olelo","mana'o makemakika",
+			"Helu","pi'apa","haiolelo","Kukakuka","Hale 'aina","Kaleka ID haumana","Papa manawa",
+			"Aha Haumana","haku thesis","Na koina a'o","Kanawai","Palapala ho'ike","Kako'o ha'awina",
+			"Huaka'i hele","Hale ku'ai haumana","Ho'olaule'a","Pa'ina pa kula","Ho'a'o 'ia",
+			"hooikaika kino","Palekana","'enekinia 'enekinia","Makemakika","Ka pau ana o ka hana",
+			"'epekema kamepiula","'ole","'ekahi","'elua","'ekolu","eha","'elima","'eono","'ehiku",
+			"'ewalu","'eiwa","'umi"
 		],
 		["pale pale", "pale aku", "poloka", "e hoomalu", "kiai"],
 		["pana", "ihe"],

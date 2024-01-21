@@ -54,7 +54,7 @@ position = Vector2(445, -145)
 position = Vector2(620, -353)
 
 [node name="GameController" parent="." groups=["game_controller"] instance=ExtResource("4_k3rsk")]
-position = Vector2(-1, 138)
+position = Vector2(-1, 123)
 
 [node name="Background2" parent="." instance=ExtResource("5_t8hon")]
 z_index = -10
