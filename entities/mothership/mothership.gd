@@ -47,7 +47,7 @@ func heal(val: int) -> void:
 func update_hp_visually(hp_changed_by=0):
 	#var darkened_factor = 1 - (float(hp)/float(max_hp))
 	#health_sprite.modulate = base_color.darkened(0.8 * darkened_factor)
-	create_tween().tween_property(health_progress_bar, "value", hp, .5) \
+	create_tween().tween_property(health_progress_bar, "value", hp, .3) \
 		.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	_add_hp_effect(hp_changed_by)
 	

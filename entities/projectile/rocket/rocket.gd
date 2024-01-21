@@ -96,6 +96,7 @@ func _on_area_entered(area):
 	if area.is_in_group("shield"):
 		if area.get_parent().language.language == language.language:
 			AudioManager.play_shield_hit()
+			area.get_parent().rocket_hit()
 			destroy()
 			return
 	elif is_same_or_parent_of(area, seek):

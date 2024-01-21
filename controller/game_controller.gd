@@ -55,8 +55,9 @@ func _on_ship_destroyed(index):
 	score_label.text = str(score * 100)
 	if score in increase_difficulty_at_score:
 		difficulty += 1
-		if difficulty > 8:
+		if difficulty == 5 or difficulty == 7 or difficulty >= 9:
 			$EnemySpawnTimer.wait_time -= 0.3
+			print_debug($EnemySpawnTimer.wait_time)
 	if score % 7 == 0:
 		spawn_health_pack()
 
