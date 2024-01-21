@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dyt6gjv55e2dy" path="res://ui/main_menu/menu_theme.tres" id="1_lfw8c"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="2_va1mr"]
 [ext_resource type="PackedScene" uid="uid://coxunspw3wxa8" path="res://vfx/background/background.tscn" id="3_dsy4x"]
-[ext_resource type="PackedScene" uid="uid://c1tfbiakb1xtq" path="res://audio/AudioManager.tscn" id="4_o7pio"]
+[ext_resource type="PackedScene" uid="uid://dx1d5an82dwvx" path="res://audio/AudioManager.tscn" id="4_o7pio"]
 
 [node name="MainMenu" type="Control" groups=["main_menu"]]
 layout_mode = 3
