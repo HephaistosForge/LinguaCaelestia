@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 var mothership: Node2D
 var speed = 30
@@ -20,10 +20,10 @@ func _process(delta: float) -> void:
 	
 
 func despawn():
-	self.queue_free()
+	$AnimationPlayer.play("destroy")
 
 
 func _on_typed_label_correctly_typed(_ignored) -> void:
 	if is_instance_valid(mothership):
 		mothership.heal(500)
-	self.queue_free()
+	despawn()
