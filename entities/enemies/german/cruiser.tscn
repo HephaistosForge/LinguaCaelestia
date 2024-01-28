@@ -1,9 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://d24o3v76dcv2o"]
+[gd_scene load_steps=10 format=3 uid="uid://d24o3v76dcv2o"]
 
 [ext_resource type="Script" path="res://entities/enemies/german/german.gd" id="1_dbg30"]
 [ext_resource type="Texture2D" uid="uid://cjmsxg2efhpti" path="res://entities/enemies/german/german_cruiser.png" id="1_gk2wh"]
+[ext_resource type="Script" path="res://entities/weapons/rocket/rocket_stats.gd" id="2_a2ljx"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="2_x7u84"]
 [ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_ld0su"]
+
+[sub_resource type="Resource" id="Resource_xynws"]
+script = ExtResource("2_a2ljx")
+size = 2.0
+rotation_speed = 0.6
+max_speed = 25.0
+accel = 25.0
+damage = 400.0
+initial_speed = 0.0
+initial_launch_speed = 85.0
+initial_launch_speed_decay_seconds = 1.5
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7a3te"]
 radius = 44.0
@@ -21,6 +33,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0.488026, 0.196034, 0.200093, 1, 1, 1, 0, 
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_dbg30")
+weapon = SubResource("Resource_xynws")
 breathing_time = 4.0
 
 [node name="Sprite" type="Sprite2D" parent="."]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbf1tgara3e7v"
-path="res://.godot/imported/warhead.png-a1bd9706b07ff53ef83eee661b2bba6e.ctex"
+path="res://.godot/imported/warhead.png-2819e054b54dd85bfd36ddc612d7dfa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/projectile/rocket/warhead.png"
-dest_files=["res://.godot/imported/warhead.png-a1bd9706b07ff53ef83eee661b2bba6e.ctex"]
+source_file="res://entities/weapons/rocket/warhead.png"
+dest_files=["res://.godot/imported/warhead.png-2819e054b54dd85bfd36ddc612d7dfa9.ctex"]
 
 [params]
 
