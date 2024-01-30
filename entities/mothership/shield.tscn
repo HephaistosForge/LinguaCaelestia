@@ -16,7 +16,7 @@ shader_parameter/idle_ripple_thickness = 0.002
 shader_parameter/shield_pattern = ExtResource("3_meo0r")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_51qag"]
-radius = 82.0
+radius = 65.0
 
 [sub_resource type="Animation" id="Animation_jscy6"]
 length = 0.001
@@ -238,7 +238,6 @@ collision_layer = 8
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(0.25, 0.25)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_51qag")
