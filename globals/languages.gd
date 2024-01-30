@@ -88,7 +88,7 @@ var LANGUAGES: Array[Language] = [
 		], 
 		["Bouclier", "défendent", "bloquer", "protègent", "Gardien"],
 		["Missile","Laser"],
-		Color.BLUE,
+		Color.ROYAL_BLUE,
 		preload("res://entities/enemies/french/cruiser.tscn"),
 	),
 ]
