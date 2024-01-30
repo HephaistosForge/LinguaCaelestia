@@ -2,6 +2,8 @@ extends Node2D
 
 const ROCKET_SCENE = preload("res://entities/weapons/rocket/rocket.tscn")
 const HEALTH_PACK_PREFAB = preload("res://entities/health_pack/health_pack.tscn")
+const INGAME_MENU_PREFAB = preload("res://ui/ingame_menu/ingame_menu.tscn")
+
 
 @export var rocket_stats: RocketStats = RocketStats.new()
 
@@ -20,8 +22,21 @@ func _ready():
 		target_positions.append(node.global_position)
 		target_occupants.append(null)
 	_spawn_enemy()
-	$TextEdit.grab_focus()
+	grab_text_edit_focus()
 	score_label = get_tree().get_first_node_in_group("score_label")
+
+
+
+func grab_text_edit_focus() -> void:
+	$TextEdit.grab_focus()
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		get_tree().paused = true
+		var ingame_menu = INGAME_MENU_PREFAB.instantiate()
+		get_tree().root.add_child(ingame_menu)
+		
 
 func _on_enemy_spawn_timer():
 	_spawn_enemy()

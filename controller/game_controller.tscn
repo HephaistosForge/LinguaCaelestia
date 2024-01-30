@@ -15,7 +15,7 @@ initial_speed = 50.0
 initial_launch_speed = 250.0
 initial_launch_speed_decay_seconds = 1.0
 
-[node name="GameController" type="Node2D"]
+[node name="GameController" type="Node2D" groups=["game_controller"]]
 script = ExtResource("1_tkqja")
 rocket_stats = SubResource("Resource_qpngc")
 

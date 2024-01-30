@@ -22,18 +22,20 @@ script = ExtResource("1_6mblk")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_6p5cb")
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(450, 250)
 layout_mode = 2
 texture = ExtResource("2_dwq8b")
-expand_mode = 2
-stretch_mode = 4
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Text"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
