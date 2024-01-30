@@ -1,9 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://ut0vy4oytro7"]
+[gd_scene load_steps=10 format=3 uid="uid://ut0vy4oytro7"]
 
 [ext_resource type="Script" path="res://entities/enemies/latin/latin.gd" id="1_001ml"]
+[ext_resource type="Script" path="res://entities/weapons/rocket/rocket_stats.gd" id="2_8qoe1"]
 [ext_resource type="Texture2D" uid="uid://dyk7wq48gycyt" path="res://entities/enemies/latin/latin_cruiser.png" id="2_guxcj"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_u6h1s"]
 [ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_pj5ew"]
+
+[sub_resource type="Resource" id="Resource_880dh"]
+script = ExtResource("2_8qoe1")
+size = 0.8
+rotation_speed = 1.0
+max_speed = 50.0
+accel = 15.0
+damage = 50.0
+initial_speed = 25.0
+initial_launch_speed = 50.0
+initial_launch_speed_decay_seconds = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjqr6"]
 radius = 23.0
@@ -21,6 +33,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.924702, 0, 0.0950825, 1, 1, 1, 0, 1)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_001ml")
+weapon = SubResource("Resource_880dh")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(3, -1)

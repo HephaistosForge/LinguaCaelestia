@@ -1,37 +1,32 @@
-extends Area2D
+extends Weapon
 
-signal destroyed(Area2D)
+var stats: RocketStats = RocketStats.new()
 
-@export var rotation_speed = 3
-@export var max_speed = 400
-@export var accel = 200
-@export var damage = 100
-@export var initial_speed = 0
-# This is a speed which steadily deacreases after launch and may be larger than
-# max speed. It is supposed to enumlate those rockets which are launched 
-# first, and then start thrusting
-@export var initial_launch_speed = 0
-@export var initial_launch_speed_decay_seconds = 0.5
-@export var initial_direction = Vector2(0, -1)
+const EXPLOSION_SCENE = preload("res://vfx/explosion/explosion.tscn")
 
-var language = Lang.ENGLISH
-
-var explosion_scene = preload("res://vfx/explosion/explosion.tscn")
-
-var seek: Node
 var speed = 0
 var launch_speed = 0
+var initial_direction = Vector2(0, -1)
 var direction: Vector2
 var allow_rotating = false
 
+
 @onready var tween = create_tween()
+
+func init(stats: RocketStats, seek: Node2D, language: Language, is_enemy: bool):
+	self.scale = Vector2.ONE * stats.size
+	self.stats = stats
+	self.seek = seek
+	self.language = language
+	if is_enemy:
+		self._set_as_enemy_rocket()
 
 func _ready():
 	AudioManager.play_missile_launch()
 	
 	direction = initial_direction
-	speed = initial_speed
-	launch_speed = initial_launch_speed
+	speed = stats.initial_speed
+	launch_speed = stats.initial_launch_speed
 	
 	$Warhead.modulate = language.color
 	
@@ -39,18 +34,18 @@ func _ready():
 	self.scale = Vector2.ZERO
 	$Particles.emitting = false
 	tween.tween_property(self, "scale", target_scale, 0.2)
-	tween.tween_property(self, "launch_speed", 0, initial_launch_speed_decay_seconds)
-	await get_tree().create_timer(initial_launch_speed_decay_seconds/2.).timeout
+	tween.tween_property(self, "launch_speed", 0, stats.initial_launch_speed_decay_seconds)
+	await get_tree().create_timer(stats.initial_launch_speed_decay_seconds/2.).timeout
 	allow_rotating = true
-	await get_tree().create_timer(initial_launch_speed_decay_seconds/2.).timeout
+	await get_tree().create_timer(stats.initial_launch_speed_decay_seconds/2.).timeout
 	$Particles.emitting = true
-	if accel > 0:
-		var speed_target_time = (max_speed - speed) / accel
-		create_tween().tween_property(self, "speed", max_speed, speed_target_time)
+	if stats.accel > 0:
+		var speed_target_time = (stats.max_speed - speed) / stats.accel
+		create_tween().tween_property(self, "speed", stats.max_speed, speed_target_time)
 
-func set_as_enemy_rocket():
+func _set_as_enemy_rocket():
 	initial_direction = Vector2(0, 1)
-	rotate(PI)
+	rotation = PI
 	collision_mask = 1 + 8 # Mothership and shields
 
 func _physics_process(delta):
@@ -63,7 +58,7 @@ func _physics_process(delta):
 	global_position += initial_direction * launch_speed * delta
 	if allow_rotating:
 		var target_dir = global_position.direction_to(seek.global_position)
-		var new_direction = (direction + target_dir * delta * rotation_speed).normalized()
+		var new_direction = (direction + target_dir * delta * stats.rotation_speed).normalized()
 		rotate(direction.angle_to(new_direction))
 		direction = new_direction
 
@@ -75,7 +70,7 @@ func is_same_or_parent_of(parent, child) -> bool:
 	return is_same_or_parent_of(parent, child.get_parent())
 	
 func destroy():
-	var explosion = explosion_scene.instantiate()
+	var explosion = EXPLOSION_SCENE.instantiate()
 	explosion.set_dir(direction)
 	explosion.position = position
 	# explosion.scale = scale
@@ -100,7 +95,7 @@ func _on_area_entered(area):
 			destroy()
 			return
 	elif is_same_or_parent_of(area, seek):
-		area.reduce_hp(damage)
+		area.reduce_hp(stats.damage)
 		AudioManager.play_missile_hit()
 		destroy()
 		return

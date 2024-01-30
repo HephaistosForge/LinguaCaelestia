@@ -1,9 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2hku02w8pf8g"]
+[gd_scene load_steps=10 format=3 uid="uid://d2hku02w8pf8g"]
 
 [ext_resource type="Texture2D" uid="uid://dlr62jd136obn" path="res://entities/enemies/hawaiian/hawaiian_cruiser.png" id="1_od66u"]
 [ext_resource type="Script" path="res://entities/enemies/hawaiian/hawaiian.gd" id="1_v62ki"]
+[ext_resource type="Script" path="res://entities/weapons/rocket/rocket_stats.gd" id="2_4saap"]
 [ext_resource type="PackedScene" uid="uid://c2nj1twkiad1l" path="res://entities/enemies/typed_label.tscn" id="3_lei02"]
 [ext_resource type="PackedScene" uid="uid://b7o8rsbm5uc88" path="res://controller/enemy_rocket_launch_position.tscn" id="4_ts03s"]
+
+[sub_resource type="Resource" id="Resource_peo4e"]
+script = ExtResource("2_4saap")
+size = 0.4
+rotation_speed = 1.2
+max_speed = 100.0
+accel = 25.0
+damage = 30.0
+initial_speed = 20.0
+initial_launch_speed = 10.0
+initial_launch_speed_decay_seconds = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgaim"]
 radius = 21.0
@@ -21,6 +33,7 @@ colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0.458824, 1, 1, 1, 0, 1)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_v62ki")
+weapon = SubResource("Resource_peo4e")
 breathing_time = 2.5
 
 [node name="Sprite" type="Sprite2D" parent="."]

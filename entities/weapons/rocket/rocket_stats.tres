@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dtgraufonkr7a"]
+
+[ext_resource type="Script" path="res://entities/weapons/rocket/rocket_stats.gd" id="1_ne33i"]
+
+[resource]
+script = ExtResource("1_ne33i")
+rotation_speed = 3
+max_speed = 400
+accel = 200
+damage = 100
+initial_speed = 0
+initial_launch_speed = 0
+initial_launch_speed_decay_seconds = 0.5
+initial_direction = Vector2(0, -1)

@@ -1,7 +1,9 @@
 extends Node2D
 
-var rocket_scene = preload("res://entities/projectile/rocket/rocket.tscn")
+const ROCKET_SCENE = preload("res://entities/weapons/rocket/rocket.tscn")
 const HEALTH_PACK_PREFAB = preload("res://entities/health_pack/health_pack.tscn")
+
+@export var rocket_stats: RocketStats = RocketStats.new()
 
 var target_positions: Array[Vector2]
 var target_occupants: Array
@@ -81,13 +83,8 @@ func spawn_health_pack():
 func _player_launch_rocket_at(node):
 	var rocket_launch_pos = get_tree().get_first_node_in_group("rocket_launch_position")
 	if is_instance_valid(rocket_launch_pos):
-		var rocket = rocket_scene.instantiate()
-		rocket.seek = node
-		rocket.initial_launch_speed = 250
-		rocket.accel = 300
-		rocket.initial_speed = 50
-		rocket.initial_launch_speed_decay_seconds = 1
-		rocket.rotation_speed = 1.7
+		var rocket = ROCKET_SCENE.instantiate()
+		rocket.init(rocket_stats, node, Lang.ENGLISH, false)
 		add_child(rocket)
 		rocket.global_position = rocket_launch_pos.global_position
 		
