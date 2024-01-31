@@ -66,7 +66,6 @@ func play_missile_hit():
 func play_missile_lock():
 	create_sound_player(missile_lock.pick_random(), null, false, 0.05)
 
-
 func play_shield_hit():
 	create_sound_player(shield_hit.pick_random(), null, false, 0.05)
 

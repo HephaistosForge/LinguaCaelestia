@@ -31,7 +31,7 @@ func grab_text_edit_focus() -> void:
 	$TextEdit.grab_focus()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		get_tree().paused = true
 		var ingame_menu = INGAME_MENU_PREFAB.instantiate()
@@ -88,7 +88,7 @@ func _random_enemy(lang=null):
 
 
 func spawn_health_pack():
-	var x = randi_range((-float(get_viewport_rect().size.x)/2) + 100, (float(get_viewport_rect().size.x/2)) - 100)
+	var x = randi_range(-int((get_viewport_rect().size.x/2) + 100), int((get_viewport_rect().size.x/2) - 100))
 	var health_pack = HEALTH_PACK_PREFAB.instantiate()
 	add_child(health_pack)
 	health_pack.global_position = Vector2(x, -(float(get_viewport_rect().size.y/2)) - 100)
