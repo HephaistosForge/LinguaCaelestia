@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://ri20kmysaadd"]
+
+[ext_resource type="Shader" path="res://ui/ingame_menu/blur.gdshader" id="1_33bub"]
+[ext_resource type="Script" path="res://ui/stage_announcement/stage_announcement.gd" id="1_064oh"]
+[ext_resource type="Theme" uid="uid://dyt6gjv55e2dy" path="res://ui/main_menu/menu_theme.tres" id="2_mkqom"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o6cjb"]
+shader = ExtResource("1_33bub")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_kcgp1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/VBoxContainer/StageLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/LocationLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nmcq5"]
+resource_name = "initial"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CenterContainer/VBoxContainer/StageLabel:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 3),
+"transitions": PackedFloat32Array(0.277393, 17.7531, 0.277393),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer/VBoxContainer/LocationLabel:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.9, 3),
+"transitions": PackedFloat32Array(1, 13.9288, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfndu"]
+_data = {
+"RESET": SubResource("Animation_kcgp1"),
+"initial": SubResource("Animation_nmcq5")
+}
+
+[node name="StageAnnouncement" type="CanvasLayer"]
+script = ExtResource("1_064oh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_o6cjb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 528.0
+offset_right = 1920.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_mkqom")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="StageLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Stage 1-3"
+horizontal_alignment = 1
+
+[node name="LocationLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Location"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qfndu")
+}

@@ -1,20 +1,16 @@
 extends Node2D
 
 const ROCKET_SCENE = preload("res://entities/weapons/rocket/rocket.tscn")
-const HEALTH_PACK_PREFAB = preload("res://entities/health_pack/health_pack.tscn")
 const INGAME_MENU_PREFAB = preload("res://ui/ingame_menu/ingame_menu.tscn")
-
 
 @export var rocket_stats: RocketStats = RocketStats.new()
 
+@onready var input_manager: Node = $InputManager
+@onready var score_manager: Node = $ScoreManager
+@onready var difficulty_manager: Node = $DifficultyManager
+
 var target_positions: Array[Vector2]
 var target_occupants: Array
-var score = 0
-var difficulty = 1
-
-
-var score_label: Label
-var increase_difficulty_at_score = [2, 9, 20, 40, 60, 90, 120, 150, 180, 200, 250, 300, 350, 400, 450, 500]
 
 
 func _ready():
@@ -22,13 +18,6 @@ func _ready():
 		target_positions.append(node.global_position)
 		target_occupants.append(null)
 	_spawn_enemy()
-	grab_text_edit_focus()
-	score_label = get_tree().get_first_node_in_group("score_label")
-
-
-
-func grab_text_edit_focus() -> void:
-	$TextEdit.grab_focus()
 
 
 func _process(_delta: float) -> void:
@@ -36,21 +25,28 @@ func _process(_delta: float) -> void:
 		get_tree().paused = true
 		var ingame_menu = INGAME_MENU_PREFAB.instantiate()
 		get_tree().root.add_child(ingame_menu)
+		ingame_menu.tree_exiting.connect(_on_ingame_menu_dismissed)
+
+
+func _on_ingame_menu_dismissed():
+	input_manager.grab_text_edit_focus()
 		
 
 func _on_enemy_spawn_timer():
 	_spawn_enemy()
+
 
 func _get_free_index():
 	var unoccupied = []
 	for i in range(0, len(target_positions)):
 		if target_occupants[i] == null:
 			unoccupied.append(i)
-	if len(target_positions) - len(unoccupied) >= difficulty:
+	if len(target_positions) - len(unoccupied) >= difficulty_manager.get_difficulty():
 		return null
 	if unoccupied.is_empty():
 		return null
 	return unoccupied.pick_random()
+
 
 func _spawn_enemy(from_language=null):
 	var empty_index = _get_free_index()
@@ -68,15 +64,8 @@ func _spawn_enemy(from_language=null):
 
 func _on_ship_destroyed(index):
 	target_occupants[index] = null
-	score += 1
-	score_label.text = str(score * 100)
-	if score in increase_difficulty_at_score:
-		difficulty += 1
-		if difficulty == 5 or difficulty == 7 or difficulty >= 9:
-			$EnemySpawnTimer.wait_time -= 0.3
-			print_debug($EnemySpawnTimer.wait_time)
-	if score % 7 == 0:
-		spawn_health_pack()
+	score_manager.add_score(1)
+
 
 func _random_enemy(lang=null):
 	if lang == null:
@@ -87,14 +76,6 @@ func _random_enemy(lang=null):
 	return cruiser
 
 
-func spawn_health_pack():
-	var x = randi_range(-int((get_viewport_rect().size.x/2) + 100), int((get_viewport_rect().size.x/2) - 100))
-	var health_pack = HEALTH_PACK_PREFAB.instantiate()
-	add_child(health_pack)
-	health_pack.global_position = Vector2(x, -(float(get_viewport_rect().size.y/2)) - 100)
-	
-
-
 func _player_launch_rocket_at(node):
 	var rocket_launch_pos = get_tree().get_first_node_in_group("rocket_launch_position")
 	if is_instance_valid(rocket_launch_pos):
@@ -102,61 +83,6 @@ func _player_launch_rocket_at(node):
 		rocket.init(rocket_stats, node, Lang.ENGLISH, false)
 		add_child(rocket)
 		rocket.global_position = rocket_launch_pos.global_position
-		
 
 
-func _on_text_edit_text_changed():
-	AudioManager.play_key_press()
-	var text = $TextEdit.text
-	if "\n" in text:
-		$TextEdit.text = ""
-		return
-	for typed_label in get_tree().get_nodes_in_group("typed_label"):
-		if typed_label.type_text(text):
-			$TextEdit.text = ""
-			AudioManager.play_typewriter_bell()
-			break
-	if _handle_if_cheat($TextEdit.text):
-		$TextEdit.text = ""
-		
-		
-func _handle_if_cheat(text) -> bool:
-	var mothership = get_tree().get_first_node_in_group("mothership")
-	match text:
-		"#heal":
-			mothership.heal(100)
-			return true
-		"#damage":
-			mothership.reduce_hp(100)
-			return true
-		"#spawn":
-			_spawn_enemy()
-			return true
-		"#difficulty":
-			difficulty += 1
-			return true
-		"#hard":
-			difficulty += 10
-			return true
-		"#invincible":
-			mothership.max_hp = 10000000
-			mothership.hp = 10000000
-			return true
-		"#pack":
-			spawn_health_pack()
-			return true
-		"#nations":
-			for lang in Lang.LANGUAGES:
-				_spawn_enemy(lang)
-			return true
-		"#chaos":
-			_handle_if_cheat("#hard")
-			_handle_if_cheat("#nations")
-			_handle_if_cheat("#nations")
-			_handle_if_cheat("#invincible")
-			return true
-	for lang in Lang.LANGUAGES:
-		if text == "#" + lang.language:
-			_spawn_enemy(lang)
-			return true
-	return false
+

@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://kvgyoarn6ghc"]
+[gd_scene load_steps=8 format=3 uid="uid://kvgyoarn6ghc"]
 
-[ext_resource type="Texture2D" uid="uid://bggybar3yr43c" path="res://resources/background.jpg" id="1_ahj1x"]
 [ext_resource type="Script" path="res://levels/main.gd" id="1_xtbef"]
 [ext_resource type="PackedScene" uid="uid://baq4lpljix6qm" path="res://entities/mothership/mothership.tscn" id="2_nbpvr"]
 [ext_resource type="PackedScene" uid="uid://neuxgsxgw5ij" path="res://controller/enemy_target_position.tscn" id="3_giaah"]
@@ -20,10 +19,6 @@ script = ExtResource("1_xtbef")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vph2v")
-
-[node name="Background" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("1_ahj1x")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -53,7 +48,7 @@ position = Vector2(445, -145)
 [node name="EnemyTargetPosition7" parent="EnemyTargetPositions" instance=ExtResource("3_giaah")]
 position = Vector2(620, -353)
 
-[node name="GameController" parent="." groups=["game_controller"] instance=ExtResource("4_k3rsk")]
+[node name="GameController" parent="." instance=ExtResource("4_k3rsk")]
 position = Vector2(-1, 123)
 
 [node name="Background2" parent="." instance=ExtResource("5_t8hon")]

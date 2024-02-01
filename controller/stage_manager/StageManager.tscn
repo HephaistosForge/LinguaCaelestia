@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0rexkycu0agd"]
+
+[ext_resource type="Script" path="res://controller/stage_manager/StageManager.gd" id="1_gm5tl"]
+[ext_resource type="Script" path="res://controller/stage_manager/markov_name_generator/markov_name_generator.gd" id="2_utpoq"]
+
+[node name="StageManager" type="Node2D"]
+script = ExtResource("1_gm5tl")
+
+[node name="NameGenerator" type="Node" parent="."]
+script = ExtResource("2_utpoq")

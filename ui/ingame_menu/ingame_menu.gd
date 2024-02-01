@@ -14,9 +14,7 @@ func _process(_delta:float) -> void:
 
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
-	get_tree().get_first_node_in_group("game_controller").grab_text_edit_focus()
 	self.queue_free()
-	
 
 
 func _on_options_button_pressed() -> void:
@@ -24,7 +22,8 @@ func _on_options_button_pressed() -> void:
 	var options = OPTIONS_PREFAB.instantiate()
 	dynamic_content_container.add_child(options)
 	dynamic_content = options
-	
+
+
 func _on_how_to_play_button_pressed() -> void:
 	dismiss_dynamic_content_if_needed()
 	var tutorial = TUTORIAL_PREFAB.instantiate()
