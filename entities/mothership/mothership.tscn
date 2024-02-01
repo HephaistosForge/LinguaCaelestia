@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://baq4lpljix6qm"]
+[gd_scene load_steps=10 format=3 uid="uid://baq4lpljix6qm"]
 
 [ext_resource type="Script" path="res://entities/mothership/mothership.gd" id="1_it0jo"]
+[ext_resource type="Script" path="res://entities/weapons/rocket/rocket_stats.gd" id="2_ml7rb"]
 [ext_resource type="PackedScene" uid="uid://6t8r5pw5wfjc" path="res://controller/rocket_launch_position.tscn" id="2_qkcl2"]
 [ext_resource type="Texture2D" uid="uid://dxk5drkxr5tbt" path="res://entities/mothership/laser.png" id="3_ca78k"]
 [ext_resource type="Texture2D" uid="uid://d0rtf686wl5ai" path="res://entities/mothership/shield_generator.png" id="4_6d8p0"]
@@ -8,9 +9,21 @@
 [ext_resource type="Script" path="res://entities/mothership/ProjectileMarker.gd" id="7_ymlm2"]
 [ext_resource type="Texture2D" uid="uid://joiapcyskl4o" path="res://resources/mothership_old.png" id="8_exvfu"]
 
+[sub_resource type="Resource" id="Resource_2765s"]
+script = ExtResource("2_ml7rb")
+size = 1.7
+rotation_speed = 3.0
+max_speed = 400.0
+accel = 300.0
+damage = 100.0
+initial_speed = 50.0
+initial_launch_speed = 250.0
+initial_launch_speed_decay_seconds = 1.0
+
 [node name="Mothership" type="Area2D" groups=["mothership"]]
 collision_mask = 0
 script = ExtResource("1_it0jo")
+rocket_stats = SubResource("Resource_2765s")
 
 [node name="Mothership" type="Sprite2D" parent="."]
 modulate = Color(1.1, 1.1, 1.1, 1)

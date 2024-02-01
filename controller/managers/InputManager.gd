@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var difficulty_manager = $"../DifficultyManager"
 @onready var health_pack_manager = $"../HealthPackManager"
-@onready var enemy_spawner = get_parent()
+@onready var enemy_spawner = $"../EnemyManager"
 
 
 func _ready():

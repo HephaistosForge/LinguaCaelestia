@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6enqi68xmjur"]
+
+[ext_resource type="Script" path="res://controller/managers/stage_manager/stage/small_fight_stage/small_fight_stage.gd" id="1_6yyq3"]
+
+[node name="SmallFightStage" type="Node2D"]
+script = ExtResource("1_6yyq3")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

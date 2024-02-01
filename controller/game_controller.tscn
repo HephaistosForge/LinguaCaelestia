@@ -2,30 +2,16 @@
 
 [ext_resource type="Script" path="res://controller/game_controller.gd" id="1_tkqja"]
 [ext_resource type="Theme" uid="uid://c482k53sm2txa" path="res://ui/theme.tres" id="2_avmw1"]
-[ext_resource type="Script" path="res://entities/weapons/rocket/rocket_stats.gd" id="2_g1ita"]
 [ext_resource type="Script" path="res://controller/managers/InputManager.gd" id="4_pwul0"]
 [ext_resource type="Script" path="res://controller/managers/ScoreManager.gd" id="4_tcbp2"]
 [ext_resource type="Script" path="res://controller/managers/DifficultyManager.gd" id="6_jsgq5"]
 [ext_resource type="Script" path="res://controller/managers/HealthPackManager.gd" id="7_lweon"]
-
-[sub_resource type="Resource" id="Resource_qpngc"]
-script = ExtResource("2_g1ita")
-size = 1.0
-rotation_speed = 1.7
-max_speed = 400.0
-accel = 300.0
-damage = 100.0
-initial_speed = 50.0
-initial_launch_speed = 250.0
-initial_launch_speed_decay_seconds = 1.0
+[ext_resource type="PackedScene" uid="uid://d0rexkycu0agd" path="res://controller/managers/stage_manager/StageManager.tscn" id="8_rb5iy"]
+[ext_resource type="Script" path="res://controller/managers/EnemyManager.gd" id="8_tj712"]
 
 [node name="GameController" type="Node2D" groups=["game_controller"]]
 script = ExtResource("1_tkqja")
-rocket_stats = SubResource("Resource_qpngc")
-
-[node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+mode = 1
 
 [node name="ScoreManager" type="Node2D" parent="."]
 script = ExtResource("4_tcbp2")
@@ -68,6 +54,14 @@ script = ExtResource("6_jsgq5")
 [node name="HealthPackManager" type="Node2D" parent="."]
 script = ExtResource("7_lweon")
 
-[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer"]
+[node name="EnemyManager" type="Node2D" parent="."]
+script = ExtResource("8_tj712")
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemyManager"]
+wait_time = 5.0
+
+[node name="StageManager" parent="." instance=ExtResource("8_rb5iy")]
+
 [connection signal="text_changed" from="InputManager/TextEdit" to="InputManager" method="_on_text_edit_text_changed"]
 [connection signal="text_set" from="InputManager/TextEdit" to="InputManager" method="_on_text_edit_text_changed"]
+[connection signal="timeout" from="EnemyManager/EnemySpawnTimer" to="EnemyManager" method="_on_enemy_spawn_timer_timeout"]

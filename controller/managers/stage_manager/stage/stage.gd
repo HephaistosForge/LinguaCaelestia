@@ -8,15 +8,14 @@ enum STAGE_TYPE {
 	INTERACTIVE
 }
 
-var stage_type: STAGE_TYPE
 var difficulty: int
 var stage: int
 var level: int
 var stage_name: String
 
+signal stage_completed
 
-func _init(_stage_type: STAGE_TYPE, _difficulty: int, _stage: int, _level: int, _stage_name: String):
-	self.stage_type = _stage_type
+func init(_difficulty: int, _stage: int, _level: int, _stage_name: String):
 	self.difficulty = _difficulty
 	self.stage = _stage
 	self.level = _level
@@ -25,3 +24,7 @@ func _init(_stage_type: STAGE_TYPE, _difficulty: int, _stage: int, _level: int, 
 
 func start():
 	push_warning("Stage type not implemented yet.")
+
+
+func check_for_win():
+	push_warning("Stage win condition not implemented.")

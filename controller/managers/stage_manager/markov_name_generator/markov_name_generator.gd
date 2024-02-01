@@ -54,4 +54,4 @@ func get_next_letter(markov):
 
 
 func get_random_planet_name():
-	return get_markov_name(planet_markov, 5, 8) + suffix_names.pick_random()
+	return get_markov_name(planet_markov, 5, 8) +" " + suffix_names.pick_random()

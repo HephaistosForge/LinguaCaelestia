@@ -2,12 +2,15 @@ extends Area2D
 
 signal player_death
 
-var max_hp = 1000
-var hp = 1000
+const ROCKET_SCENE = preload("res://entities/weapons/rocket/rocket.tscn")
+
+@export var rocket_stats: RocketStats = RocketStats.new()
 
 @onready var health_progress_bar = $HealthProgressBar
 @onready var health_effect = $HealthEffect
 
+var max_hp = 1000
+var hp = 1000
 var base_color = Color.AQUAMARINE
 
 func _ready():
@@ -17,7 +20,15 @@ func _ready():
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	health_progress_bar.max_value = max_hp
 	update_hp_visually()
-	
+
+
+func launch_rocket_at_node(node: Node) -> void:
+	var rocket_launch_pos = get_tree().get_first_node_in_group("rocket_launch_position")
+	if is_instance_valid(rocket_launch_pos):
+		var rocket = ROCKET_SCENE.instantiate()
+		rocket.init(rocket_stats, node, Lang.ENGLISH, false)
+		add_child(rocket)
+		rocket.global_position = rocket_launch_pos.global_position
 
 
 func get_projectile_targets() -> Array[Node]:
@@ -64,6 +75,7 @@ func _add_hp_effect(hp_changed_by):
 	tween.tween_property(effect, "self_modulate", Color.TRANSPARENT, .1) \
 		.set_trans(Tween.TRANS_LINEAR)
 	tween.finished.connect(func(): effect.queue_free())
+
 
 func handle_death() -> void:
 	player_death.emit()
