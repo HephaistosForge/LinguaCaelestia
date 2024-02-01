@@ -1,10 +1,12 @@
 class_name StageManager extends Node2D
 
 const STAGE_ANNOUNCEMENT_PREFAB: PackedScene = preload("res://ui/stage_announcement/stage_announcement.tscn")
+
 const SMALL_FIGHT_STAGE: PackedScene = preload("res://controller/managers/stage_manager/stage/small_fight_stage/SmallFightStage.tscn")
 
 
 @onready var name_generator: Node = $NameGenerator
+
 
 var current_stage: Stage
 

@@ -11,7 +11,6 @@
 
 [node name="GameController" type="Node2D" groups=["game_controller"]]
 script = ExtResource("1_tkqja")
-mode = 1
 
 [node name="ScoreManager" type="Node2D" parent="."]
 script = ExtResource("4_tcbp2")

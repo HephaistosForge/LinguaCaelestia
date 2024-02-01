@@ -46,7 +46,8 @@ func _spawn_enemy(from_language=null, subscriber=null):
 	add_child(cruiser)
 	cruiser.enemy_typed_label.connect(mothership.launch_rocket_at_node)
 	cruiser.destroyed.connect(_on_ship_destroyed)
-	cruiser.destroyed.connect(subscriber.on_ship_destroyed)
+	if subscriber:
+		cruiser.destroyed.connect(subscriber.on_ship_destroyed)
 	
 
 func _random_enemy(lang=null):

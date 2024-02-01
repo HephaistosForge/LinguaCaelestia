@@ -30,7 +30,7 @@ func check_for_win() -> bool:
 
 
 func _on_timer_timeout() -> void:
-	if spawned_enemies < enemies_to_spawn:
+	if spawned_enemies < enemies_to_spawn and active_enemies < 3:
 		enemy_manager._spawn_enemy(null, self)
 		spawned_enemies += 1
 		active_enemies += 1
