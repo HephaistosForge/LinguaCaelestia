@@ -6,7 +6,7 @@ Lingua Caelestia is a typing space shooter game created during the [FischbrötJA
 
 You will face spaceships of different nationalities, that are shooting your mothership with rockets. 
 
-Entering the correct words displayed above the enemies or your shield emitters on your keyboard, activates the motherships rockets or your own shield generators respectively.
+Entering the correct words displayed above the enemies or your shield emitters on your keyboard, activates the mothership's rockets or your own shield generators respectively.
 
 You will have to manage the resources of your shield generators very carefully, since the shield frenquencies vary from enemy to enemy and only one rocket type can be blocked at a time.
 
