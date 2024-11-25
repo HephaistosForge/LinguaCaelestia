@@ -2,6 +2,8 @@
 
 Lingua Caelestia is a typing space shooter game created during the 24 hour [FischbrötJAM](https://itch.io/jam/fischbrotjam) game jam from the 19th to 20th of January 2024.
 
+## [Play Online Now!](https://brutenis.net/linguacaelestia)
+
 ![image](https://github.com/user-attachments/assets/6984706c-19e6-413a-a882-007b65f6b5a3)
 
 
