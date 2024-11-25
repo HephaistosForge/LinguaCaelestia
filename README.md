@@ -18,3 +18,5 @@ Currently there are word sets supported in four different languages:
 - hawaiian
 - german
 - latin
+
+Licensed under GPL-3.0
